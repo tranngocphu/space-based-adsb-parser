@@ -1,0 +1,1424 @@
+{
+    'field_name': 'I008__RA__val',
+    'description': 'TCAS Resolution Advisory active',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'TCAS II or ACAS RA not active'
+    }, {
+        '@val': '1',
+        '#text': 'TCAS RA active'
+    }]
+} {
+    'field_name': 'I008__TC__val',
+    'description': 'Target Change Report Capability',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no capability for Trajectory Change Reports'
+    }, {
+        '@val': '1',
+        '#text': 'support for TC+0 reports only'
+    }, {
+        '@val': '2',
+        '#text': 'support for multiple TC reports'
+    }, {
+        '@val': '3',
+        '#text': 'reserved'
+    }]
+} {
+    'field_name': 'I008__TS__val',
+    'description': 'Target State Report Capability',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no capability to support Target State Reports'
+    }, {
+        '@val': '1',
+        '#text': 'capable of supporting target State Reports'
+    }]
+} {
+    'field_name': 'I008__ARV__val',
+    'description': 'Air-Referenced Velocity Report Capability',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no capability to generate ARV-reports'
+    }, {
+        '@val': '1',
+        '#text': 'capable of generate ARV-reports'
+    }]
+} {
+    'field_name': 'I008__CDTI_A__val',
+    'description': 'Cockpit Display of Traffic Information airborne',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'CDTI not operational'
+    }, {
+        '@val': '1',
+        '#text': 'CDTI operational'
+    }]
+} {
+    'field_name': 'I008__not_TCAS__val',
+    'description': 'TCAS System Status',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'TCAS operational or unknown'
+    }, {
+        '@val': '1',
+        '#text': 'TCAS not installed or not operational'
+    }]
+} {
+    'field_name': 'I008__SA__val',
+    'description': 'Single Antenna',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Antenna Diversity'
+    }, {
+        '@val': '1',
+        '#text': 'Single Antenna only'
+    }]
+} {
+    'field_name': 'I010__SAC__val',
+    'description': 'System Area Code',
+    'meaning': ''
+} {
+    'field_name': 'I010__SIC__val',
+    'description': 'System Identification Code',
+    'meaning': ''
+} {
+    'field_name': 'I015__id__val',
+    'description': 'Service Identification',
+    'meaning': ''
+} {
+    'field_name': 'I016__RP__val',
+    'description': 'Report Period',
+    'meaning': ''
+} {
+    'field_name': 'I020__ECAT__val',
+    'description': 'Emitter Category',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'No ADS-B Emitter Category Information'
+    }, {
+        '@val': '1',
+        '#text': 'light aircraft <= 15500 lbs'
+    }, {
+        '@val': '2',
+        '#text': '15500 lbs < small aircraft < 75000 lbs'
+    }, {
+        '@val': '3',
+        '#text': '75000 lbs < medium a/c < 300000 lbs'
+    }, {
+        '@val': '4',
+        '#text': 'High Vortex Large'
+    }, {
+        '@val': '5',
+        '#text': '300000 lbs <= heavy aircraft'
+    }, {
+        '@val': '6',
+        '#text': 'highly manoeuvrable (5g acceleration capability) and high speed (>400 knots cruise)'
+    }, {
+        '@val': '7',
+        '#text': 'reserved'
+    }, {
+        '@val': '8',
+        '#text': 'reserved'
+    }, {
+        '@val': '9',
+        '#text': 'reserved'
+    }, {
+        '@val': '10',
+        '#text': 'rotocraft'
+    }, {
+        '@val': '11',
+        '#text': 'glider / sailplane'
+    }, {
+        '@val': '12',
+        '#text': 'lighter-than-air'
+    }, {
+        '@val': '13',
+        '#text': 'unmanned aerial vehicle'
+    }, {
+        '@val': '14',
+        '#text': 'space / transatmospheric vehicle'
+    }, {
+        '@val': '15',
+        '#text': 'ultralight / handglider / paraglider'
+    }, {
+        '@val': '16',
+        '#text': 'parachutist / skydiver'
+    }, {
+        '@val': '17',
+        '#text': 'reserved'
+    }, {
+        '@val': '18',
+        '#text': 'reserved'
+    }, {
+        '@val': '19',
+        '#text': 'reserved'
+    }, {
+        '@val': '20',
+        '#text': 'surface emergency vehicle'
+    }, {
+        '@val': '21',
+        '#text': 'surface service vehicle'
+    }, {
+        '@val': '22',
+        '#text': 'fixed ground or tethered obstruction'
+    }, {
+        '@val': '23',
+        '#text': 'cluster obstacle'
+    }, {
+        '@val': '24',
+        '#text': 'line obstacle'
+    }]
+} {
+    'field_name': 'I040__ATP__val',
+    'description': 'Address Type',
+    'meaning': [{
+        '@val': '0',
+        '#text': '24-Bit ICAO address'
+    }, {
+        '@val': '1',
+        '#text': 'Duplicate address'
+    }, {
+        '@val': '2',
+        '#text': 'Surface vehicle address'
+    }, {
+        '@val': '3',
+        '#text': 'Anonymous address'
+    }, {
+        '@val': '4',
+        '#text': 'Reserved for future use'
+    }, {
+        '@val': '5',
+        '#text': 'Reserved for future use'
+    }, {
+        '@val': '6',
+        '#text': 'Reserved for future use'
+    }, {
+        '@val': '7',
+        '#text': 'Reserved for future use'
+    }]
+} {
+    'field_name': 'I040__ARC__val',
+    'description': 'Altitude Reporting Capability',
+    'meaning': [{
+        '@val': '0',
+        '#text': '25 ft'
+    }, {
+        '@val': '1',
+        '#text': '100 ft'
+    }, {
+        '@val': '2',
+        '#text': 'Unknown'
+    }, {
+        '@val': '3',
+        '#text': 'Invalid'
+    }]
+} {
+    'field_name': 'I040__RC__val',
+    'description': 'Range Check',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Default'
+    }, {
+        '@val': '1',
+        '#text': 'Range Check passed, CPR Validation pending'
+    }]
+} {
+    'field_name': 'I040__RAB__val',
+    'description': 'Report Type',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Report from target transponder'
+    }, {
+        '@val': '1',
+        '#text': 'Report from field monitor (fixed transponder)'
+    }]
+} {
+    'field_name': 'I040__FX__val',
+    'description': 'Field Extension',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'End of item'
+    }, {
+        '@val': '1',
+        '#text': 'Entension into first extent'
+    }]
+} {
+    'field_name': 'I040__DCR__val',
+    'description': 'Differential Correction',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'No differential correction (ADS-B)'
+    }, {
+        '@val': '1',
+        '#text': 'Differential correction (ADS-B)'
+    }]
+} {
+    'field_name': 'I040__GBS__val',
+    'description': 'Ground Bit Setting',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Ground Bit not set'
+    }, {
+        '@val': '1',
+        '#text': 'Ground Bit set'
+    }]
+} {
+    'field_name': 'I040__SIM__val',
+    'description': 'Simulated Target',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Actual target report'
+    }, {
+        '@val': '1',
+        '#text': 'Simulated target report'
+    }]
+} {
+    'field_name': 'I040__TST__val',
+    'description': 'Test Target',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Default'
+    }, {
+        '@val': '1',
+        '#text': 'Test Target'
+    }]
+} {
+    'field_name': 'I040__SAA__val',
+    'description': 'Selected Altitude Available',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Equipment capable to provide Selected Altitude'
+    }, {
+        '@val': '1',
+        '#text': 'Equipment not capable to provide Selected Altitude'
+    }]
+} {
+    'field_name': 'I040__CL__val',
+    'description': 'Confidence Level',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Report valid'
+    }, {
+        '@val': '1',
+        '#text': 'Report suspect'
+    }, {
+        '@val': '2',
+        '#text': 'No information'
+    }, {
+        '@val': '3',
+        '#text': 'Reserved for future use'
+    }]
+} {
+    'field_name': 'I040__FX__val',
+    'description': 'Field Extension',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'End of item'
+    }, {
+        '@val': '1',
+        '#text': 'Entension into second extent'
+    }]
+} {
+    'field_name': 'I040__LLC__val',
+    'description': 'List Lookup Check',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'default'
+    }, {
+        '@val': '1',
+        '#text': 'List Lookup failed'
+    }]
+} {
+    'field_name': 'I040__IPC__val',
+    'description': 'Independent Position Check',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'default'
+    }, {
+        '@val': '1',
+        '#text': 'Independent Position Check failed'
+    }]
+} {
+    'field_name': 'I040__NOGO__val',
+    'description': 'No-go Bit Status',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'NOGO-bit not set'
+    }, {
+        '@val': '1',
+        '#text': 'NOGO-bit set'
+    }]
+} {
+    'field_name': 'I040__CPR__val',
+    'description': 'Compact Position Reporting',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'CPR Validation correct'
+    }, {
+        '@val': '1',
+        '#text': 'CPR Validation failed'
+    }]
+} {
+    'field_name': 'I040__LDPJ__val',
+    'description': 'Local Decoding Position Jump',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'LDPJ not detected'
+    }, {
+        '@val': '1',
+        '#text': 'LDPJ detected'
+    }]
+} {
+    'field_name': 'I040__RCF__val',
+    'description': 'Range Check',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'default'
+    }, {
+        '@val': '1',
+        '#text': 'Range Check failed'
+    }]
+} {
+    'field_name': 'I040__FX__val',
+    'description': 'Field Extension',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'End of data item'
+    }, {
+        '@val': '1',
+        '#text': 'Entension into third extent'
+    }]
+} {
+    'field_name': 'I070__Mode3A__val',
+    'description': 'Mode-3/A reply in octal',
+    'meaning': ''
+} {
+    'field_name': 'I071__time_applicability_position__val',
+    'description': 'Time of Applicability of Position',
+    'meaning': ''
+} {
+    'field_name': 'I072__time_applicability_velocity__val',
+    'description': 'Time of Applicability of Velocity',
+    'meaning': ''
+} {
+    'field_name': 'I073__time_reception_position__val',
+    'description': 'Time of Message Reception of Position',
+    'meaning': ''
+} {
+    'field_name': 'I074__FSI__val',
+    'description': 'Full Second Indication',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'TOMRp whole seconds = (I021/073) Whole seconds'
+    }, {
+        '@val': '1',
+        '#text': 'TOMRp whole seconds = (I021/073) Whole seconds + 1'
+    }, {
+        '@val': '2',
+        '#text': 'TOMRp whole seconds = (I021/073) Whole seconds - 1'
+    }, {
+        '@val': '3',
+        '#text': 'Reserved'
+    }]
+} {
+    'field_name': 'I074__time_reception_position_highprecision__val',
+    'description': 'Fractional part of the time of message reception for position in the ground station.',
+    'meaning': ''
+} {
+    'field_name': 'I075__time_reception_velocity__val',
+    'description': 'Time of Message Reception of Velocity',
+    'meaning': ''
+} {
+    'field_name': 'I076__FSI__val',
+    'description': 'Full Second Indication',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'TOMRv whole seconds = (I021/073) Whole seconds'
+    }, {
+        '@val': '1',
+        '#text': 'TOMRv whole seconds = (I021/073) Whole seconds + 1'
+    }, {
+        '@val': '2',
+        '#text': 'TOMRv whole seconds = (I021/073) Whole seconds - 1'
+    }, {
+        '@val': '3',
+        '#text': 'Reserved'
+    }]
+} {
+    'field_name': 'I076__time_reception_velocity_highprecision__val',
+    'description': 'Fractional part of the time of message reception for velocity in the ground station.',
+    'meaning': ''
+} {
+    'field_name': 'I077__time_report_transmission__val',
+    'description': 'Time of ASTERIX Report Transmission',
+    'meaning': ''
+} {
+    'field_name': 'I080__TAddr__val',
+    'description': 'Target Address',
+    'meaning': ''
+} {
+    'field_name': 'I090__NUCr_or_NACv__val',
+    'description': 'Navigation Uncertainty Category for velocity or Navigation Accuracy Category for Velocity',
+    'meaning': ''
+} {
+    'field_name': 'I090__NUCp_or_NIC__val',
+    'description': 'Navigation Uncertainty Category for Position NUCp or Navigation Integrity Category NIC.',
+    'meaning': ''
+} {
+    'field_name': 'I090__FX__val',
+    'description': 'Extension Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'End of Data Item'
+    }, {
+        '@val': '1',
+        '#text': 'Extension into first extent'
+    }]
+} {
+    'field_name': 'I090__NICbaro__val',
+    'description': 'Navigation Integrity Category for Barometric Altitude',
+    'meaning': ''
+} {
+    'field_name': 'I090__SIL__val',
+    'description': 'Surveillance (version 1) or Source (version 2) Integrity Level',
+    'meaning': ''
+} {
+    'field_name': 'I090__NACp__val',
+    'description': 'Navigation Accuracy Category for Position',
+    'meaning': ''
+} {
+    'field_name': 'I090__FX__val',
+    'description': 'Extension Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'End of Data Item'
+    }, {
+        '@val': '1',
+        '#text': 'Extension into next extent'
+    }]
+} {
+    'field_name': 'I090__SILS__val',
+    'description': '',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Measured per light-hour'
+    }, {
+        '@val': '1',
+        '#text': 'Measured per sample'
+    }]
+} {
+    'field_name': 'I090__SDA__val',
+    'description': 'Horizontal Position System Design Assurance Level (as defined in version 2)',
+    'meaning': ''
+} {
+    'field_name': 'I090__GVA__val',
+    'description': 'Geometric Altitude Accuracy',
+    'meaning': ''
+} {
+    'field_name': 'I090__FX__val',
+    'description': 'Extension Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'End of Data Item'
+    }, {
+        '@val': '1',
+        '#text': 'Extension into next extent'
+    }]
+} {
+    'field_name': 'I090__PIC__val',
+    'description': 'Position Integrity Category',
+    'meaning': ''
+} {
+    'field_name': 'I090__FX__val',
+    'description': 'Extension Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'End of Data Item'
+    }, {
+        '@val': '1',
+        '#text': 'Extension into next extent'
+    }]
+} {
+    'field_name': 'I110__TIS__val',
+    'description': 'Trajectory Intent Status',
+    'meaning': ''
+} {
+    'field_name': 'I110__TID__val',
+    'description': 'Trajectory Intent Data',
+    'meaning': ''
+} {
+    'field_name': 'I110__FX__val',
+    'description': 'Extension Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'End of Data Item'
+    }, {
+        '@val': '1',
+        '#text': 'Extension into next extent'
+    }]
+} {
+    'field_name': 'I110__NAV__val',
+    'description': 'NAV',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Trajectory Intent Data is available for this aircraft'
+    }, {
+        '@val': '1',
+        '#text': 'Trajectory Intent Data is not available for this aircraft'
+    }]
+} {
+    'field_name': 'I110__NVB__val',
+    'description': 'NVB',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Trajectory Intent Data is valid'
+    }, {
+        '@val': '1',
+        '#text': 'Trajectory Intent Data is not valid'
+    }]
+} {
+    'field_name': 'I110__FX__val',
+    'description': 'Extension Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'End of Data Item'
+    }, {
+        '@val': '1',
+        '#text': 'Extension into next extent'
+    }]
+} {
+    'field_name': 'I110__TCA__val',
+    'description': '',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'TCP number available'
+    }, {
+        '@val': '1',
+        '#text': 'TCP number not available'
+    }]
+} {
+    'field_name': 'I110__NC__val',
+    'description': '',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'TCP compliance'
+    }, {
+        '@val': '1',
+        '#text': 'TCP non-compliance'
+    }]
+} {
+    'field_name': 'I110__TcpN__val',
+    'description': 'Trajectory Change Point Number',
+    'meaning': ''
+} {
+    'field_name': 'I110__Alt__val',
+    'description': 'Altitude',
+    'meaning': ''
+} {
+    'field_name': 'I110__Lat__val',
+    'description': 'Latitude',
+    'meaning': ''
+} {
+    'field_name': 'I110__Lon__val',
+    'description': 'Longitude',
+    'meaning': ''
+} {
+    'field_name': 'I110__PType__val',
+    'description': 'Point Type',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Unknown'
+    }, {
+        '@val': '1',
+        '#text': 'Fly by waypoint (LT)'
+    }, {
+        '@val': '2',
+        '#text': 'Fly over waypoint (LT)'
+    }, {
+        '@val': '3',
+        '#text': 'Hold pattern (LT)'
+    }, {
+        '@val': '4',
+        '#text': 'Procedure hold (LT)'
+    }, {
+        '@val': '5',
+        '#text': 'Procedure turn (LT)'
+    }, {
+        '@val': '6',
+        '#text': 'RF leg (LT)'
+    }, {
+        '@val': '7',
+        '#text': 'Top of climb (VT)'
+    }, {
+        '@val': '8',
+        '#text': 'Top of descent (VT)'
+    }, {
+        '@val': '9',
+        '#text': 'Start of level (VT)'
+    }, {
+        '@val': '10',
+        '#text': 'Cross-over altitude (VT)'
+    }, {
+        '@val': '11',
+        '#text': 'Transition altitude (VT)'
+    }]
+} {
+    'field_name': 'I110__TD__val',
+    'description': '',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'N/A'
+    }, {
+        '@val': '1',
+        '#text': 'Turn right'
+    }, {
+        '@val': '2',
+        '#text': 'Turn left'
+    }, {
+        '@val': '3',
+        '#text': 'No turn'
+    }]
+} {
+    'field_name': 'I110__TRA__val',
+    'description': 'Turn Radius Availability',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'TTR not available'
+    }, {
+        '@val': '1',
+        '#text': 'TTR available'
+    }]
+} {
+    'field_name': 'I110__TOA__val',
+    'description': '',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'TOV available'
+    }, {
+        '@val': '1',
+        '#text': 'TOV not available'
+    }]
+} {
+    'field_name': 'I110__TOV__val',
+    'description': 'Time Over Point',
+    'meaning': ''
+} {
+    'field_name': 'I110__TTR__val',
+    'description': 'TCP Turn radius',
+    'meaning': ''
+} {
+    'field_name': 'I130__Lat__val',
+    'description': 'Latitude in WGS.84 in twos complement. Range -90 <= Lat <= 90 deg.',
+    'meaning': ''
+} {
+    'field_name': 'I130__Lon__val',
+    'description': 'Longitude in WGS.84 in twos complement. Range -180 <= longitude < 180 deg.',
+    'meaning': ''
+} {
+    'field_name': 'I131__Lat__val',
+    'description': 'Latitude In WGS.84 in twos complement. Range -90 <= Lat <= 90 deg.',
+    'meaning': ''
+} {
+    'field_name': 'I131__Lon__val',
+    'description': "Longitude In WGS.84 in two's complement. Range -180 <= longitude < 180 deg.",
+    'meaning': ''
+} {
+    'field_name': 'I132__MAM__val',
+    'description': 'Message Amplitude',
+    'meaning': ''
+} {
+    'field_name': 'I140__geometric_height__val',
+    'description': 'Geometric Height',
+    'meaning': ''
+} {
+    'field_name': 'I145__FL__val',
+    'description': 'Flight Level',
+    'meaning': ''
+} {
+    'field_name': 'I146__SAS__val',
+    'description': 'Source Availability',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'No source information provided'
+    }, {
+        '@val': '1',
+        '#text': 'Source Information provided'
+    }]
+} {
+    'field_name': 'I146__Source__val',
+    'description': 'Source',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Unknown'
+    }, {
+        '@val': '1',
+        '#text': 'Aircraft Altitude (Holding Altitude)'
+    }, {
+        '@val': '2',
+        '#text': 'FCU/MCP Selected Altitude'
+    }, {
+        '@val': '3',
+        '#text': 'FMS Selected Altitude'
+    }]
+} {
+    'field_name': 'I146__Alt__val',
+    'description': 'Altitude',
+    'meaning': ''
+} {
+    'field_name': 'I148__MV__val',
+    'description': 'Manage Vertical Mode',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Not active'
+    }, {
+        '@val': '1',
+        '#text': 'Active'
+    }]
+} {
+    'field_name': 'I148__AH__val',
+    'description': 'Altitude Hold Mode',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Not active'
+    }, {
+        '@val': '1',
+        '#text': 'Active'
+    }]
+} {
+    'field_name': 'I148__AM__val',
+    'description': 'Approach Mode',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Not active'
+    }, {
+        '@val': '1',
+        '#text': 'Active'
+    }]
+} {
+    'field_name': 'I148__Alt__val',
+    'description': 'Altitude',
+    'meaning': ''
+} {
+    'field_name': 'I150__IM__val',
+    'description': 'Air Speed type',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Air Speed = IAS'
+    }, {
+        '@val': '1',
+        '#text': 'Air Speed = Mach'
+    }]
+} {
+    'field_name': 'I150__ASpeed__val',
+    'description': 'Air Speed (IAS or Mach)',
+    'meaning': ''
+} {
+    'field_name': 'I151__RE__val',
+    'description': 'Range Exceeded Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Value in defined range'
+    }, {
+        '@val': '1',
+        '#text': 'Value exceeds defined range'
+    }]
+} {
+    'field_name': 'I151__TAS__val',
+    'description': 'True Air Speed',
+    'meaning': ''
+} {
+    'field_name': 'I152__MHdg__val',
+    'description': 'Magnetic Heading',
+    'meaning': ''
+} {
+    'field_name': 'I155__RE__val',
+    'description': 'Range Exceeded Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Value in defined range'
+    }, {
+        '@val': '1',
+        '#text': 'Value exceeds defined range'
+    }]
+} {
+    'field_name': 'I155__BVR__val',
+    'description': 'Barometric Vertical Rate',
+    'meaning': ''
+} {
+    'field_name': 'I157__RE__val',
+    'description': 'Range Exceeded Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Value in defined range'
+    }, {
+        '@val': '1',
+        '#text': 'Value exceeds defined range'
+    }]
+} {
+    'field_name': 'I157__GVR__val',
+    'description': 'Geometric Vertical Rate',
+    'meaning': ''
+} {
+    'field_name': 'I160__RE__val',
+    'description': 'Range Exceeded Indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Value in defined range'
+    }, {
+        '@val': '1',
+        '#text': 'Value exceeds defined range'
+    }]
+} {
+    'field_name': 'I160__GS__val',
+    'description': 'Ground Speed referenced to WGS-84',
+    'meaning': ''
+} {
+    'field_name': 'I160__TA__val',
+    'description': 'Track Angle clockwise reference to True North',
+    'meaning': ''
+} {
+    'field_name': 'I161__TrackN__val',
+    'description': 'Track number',
+    'meaning': ''
+} {
+    'field_name': 'I165__TA_rate__val',
+    'description': 'Track Angle Rate',
+    'meaning': ''
+} {
+    'field_name': 'I170__TId__val',
+    'description': 'Characters 1-8 (coded on 6 Bits each) defining target identification when flight plan is available or the registration marking when no flight plan is available. Coding rules are provided in [6] Section 3.1.2.9.1.2 and Table 3-9.',
+    'meaning': ''
+} {
+    'field_name': 'I200__ICF__val',
+    'description': 'Intent Change Flag',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'No intent change active'
+    }, {
+        '@val': '1',
+        '#text': 'Intent change flag raised'
+    }]
+} {
+    'field_name': 'I200__LNAV__val',
+    'description': 'LNAV Mode',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'LNAV Mode engaged'
+    }, {
+        '@val': '1',
+        '#text': 'LNAV Mode not engaged'
+    }]
+} {
+    'field_name': 'I200__ME__val',
+    'description': 'Military emergency',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'No military emergency'
+    }, {
+        '@val': '1',
+        '#text': 'Military emergency/BitsValue>'
+    }]
+} {
+    'field_name': 'I200__PS__val',
+    'description': 'Priority Status',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'No emergency / not reported'
+    }, {
+        '@val': '1',
+        '#text': 'General emergency'
+    }, {
+        '@val': '2',
+        '#text': 'Lifeguard / medical emergency'
+    }, {
+        '@val': '3',
+        '#text': 'Minimum fuel'
+    }, {
+        '@val': '4',
+        '#text': 'No communications'
+    }, {
+        '@val': '5',
+        '#text': 'Unlawful interference'
+    }, {
+        '@val': '6',
+        '#text': 'Downed Aircraft'
+    }]
+} {
+    'field_name': 'I200__SS__val',
+    'description': 'Surveillance Status',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'No condition reported'
+    }, {
+        '@val': '1',
+        '#text': 'Permanent Alert (Emergency condition)'
+    }, {
+        '@val': '2',
+        '#text': 'Temporary Alert (change in Mode 3/A Code other than emergency)'
+    }, {
+        '@val': '3',
+        '#text': 'SPI set'
+    }]
+} {
+    'field_name': 'I210__VNS__val',
+    'description': 'Version Not Supported',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'The MOPS Version is supported by the GS'
+    }, {
+        '@val': '1',
+        '#text': 'The MOPS Version is not supported by the GS'
+    }]
+} {
+    'field_name': 'I210__VN__val',
+    'description': 'Version Number',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'DO-260 [Ref. 8]'
+    }, {
+        '@val': '1',
+        '#text': 'DO-260A [Ref. 9]'
+    }, {
+        '@val': '2',
+        '#text': 'DO-260B'
+    }]
+} {
+    'field_name': 'I210__LTT__val',
+    'description': 'Link Technology Type',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Other'
+    }, {
+        '@val': '1',
+        '#text': 'UAT'
+    }, {
+        '@val': '2',
+        '#text': '1090 ES'
+    }, {
+        '@val': '3',
+        '#text': 'VDL 4'
+    }, {
+        '@val': '4',
+        '#text': 'Not assigned'
+    }, {
+        '@val': '5',
+        '#text': 'Not assigned'
+    }, {
+        '@val': '6',
+        '#text': 'Not assigned'
+    }, {
+        '@val': '7',
+        '#text': 'Not assigned'
+    }]
+} {
+    'field_name': 'I220__WS__val',
+    'description': 'Wind speed',
+    'meaning': ''
+} {
+    'field_name': 'I220__WD__val',
+    'description': 'Wind Direction',
+    'meaning': ''
+} {
+    'field_name': 'I220__TMP__val',
+    'description': 'Temperature',
+    'meaning': ''
+} {
+    'field_name': 'I220__TRB__val',
+    'description': 'Turbulence',
+    'meaning': ''
+} {
+    'field_name': 'I220__FX__val',
+    'description': 'Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension'
+    }]
+} {
+    'field_name': 'I230__RollA__val',
+    'description': 'Roll Angle',
+    'meaning': ''
+} {
+    'field_name': 'I260__TYP__val',
+    'description': 'Message Type',
+    'meaning': ''
+} {
+    'field_name': 'I260__STYP__val',
+    'description': 'Message Sub-Type',
+    'meaning': ''
+} {
+    'field_name': 'I260__ARA__val',
+    'description': 'Active Resolution Advisories',
+    'meaning': ''
+} {
+    'field_name': 'I260__RAC__val',
+    'description': 'RAC (RA Complement) Record',
+    'meaning': ''
+} {
+    'field_name': 'I260__RAT__val',
+    'description': 'RA Terminated',
+    'meaning': ''
+} {
+    'field_name': 'I260__MTE__val',
+    'description': 'Multiple Threat Encounter',
+    'meaning': ''
+} {
+    'field_name': 'I260__TTI__val',
+    'description': 'Threat Type Indicator',
+    'meaning': ''
+} {
+    'field_name': 'I260__TID__val',
+    'description': 'Threat Identity Data',
+    'meaning': ''
+} {
+    'field_name': 'I271__POA__val',
+    'description': 'Position Offset Applied',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Position transmitted is not ADS-B position reference point'
+    }, {
+        '@val': '1',
+        '#text': 'Position transmitted is the ADS-B position reference point'
+    }]
+} {
+    'field_name': 'I271__CDTI_S__val',
+    'description': 'Cockpit Display of Traffic Information Surface',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'CDTI not operational'
+    }, {
+        '@val': '1',
+        '#text': 'CDTI operational'
+    }]
+} {
+    'field_name': 'I271__B2_low__val',
+    'description': 'Class B2 transmit power less than 70 Watts',
+    'meaning': [{
+        '@val': '0',
+        '#text': '>= 70 Watts'
+    }, {
+        '@val': '1',
+        '#text': '< 70 Watts'
+    }]
+} {
+    'field_name': 'I271__RAS__val',
+    'description': 'Receiving ATC Services',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Aircraft not receiving ATC-services'
+    }, {
+        '@val': '1',
+        '#text': 'Aircraft receiving ATC services'
+    }]
+} {
+    'field_name': 'I271__IDENT__val',
+    'description': "Setting of 'IDENT'-switch",
+    'meaning': [{
+        '@val': '0',
+        '#text': 'IDENT switch not active'
+    }, {
+        '@val': '1',
+        '#text': 'IDENT switch active'
+    }]
+} {
+    'field_name': 'I271__FX__val',
+    'description': 'FX Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension into first extent'
+    }]
+} {
+    'field_name': 'I271__LW__val',
+    'description': 'Length and width of the aircraft',
+    'meaning': ''
+} {
+    'field_name': 'I271__FX__val',
+    'description': 'Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension'
+    }]
+} {
+    'field_name': 'I295__AOS__val',
+    'description': 'Aircraft Operational Status age',
+    'meaning': ''
+} {
+    'field_name': 'I295__TRD__val',
+    'description': 'Target Report Descriptor age',
+    'meaning': ''
+} {
+    'field_name': 'I295__M3A__val',
+    'description': 'Mode 3/A Code age',
+    'meaning': ''
+} {
+    'field_name': 'I295__QI__val',
+    'description': 'Quality Indicators age',
+    'meaning': ''
+} {
+    'field_name': 'I295__TI__val',
+    'description': 'Trajectory Intent age',
+    'meaning': ''
+} {
+    'field_name': 'I295__MAM__val',
+    'description': 'Message Amplitude age',
+    'meaning': ''
+} {
+    'field_name': 'I295__GH__val',
+    'description': 'Geometric Height age',
+    'meaning': ''
+} {
+    'field_name': 'I295__FX__val',
+    'description': 'Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension'
+    }]
+} {
+    'field_name': 'I295__FL__val',
+    'description': 'Flight Level age',
+    'meaning': ''
+} {
+    'field_name': 'I295__ISA__val',
+    'description': 'Intermediate State Selected Altitude age',
+    'meaning': ''
+} {
+    'field_name': 'I295__FSA__val',
+    'description': 'Final State Selected Altitude age',
+    'meaning': ''
+} {
+    'field_name': 'I295__AS__val',
+    'description': 'Air Speed age',
+    'meaning': ''
+} {
+    'field_name': 'I295__TAS__val',
+    'description': 'True Air Speed age',
+    'meaning': ''
+} {
+    'field_name': 'I295__MH__val',
+    'description': 'Magnetic Heading age',
+    'meaning': ''
+} {
+    'field_name': 'I295__BVR__val',
+    'description': 'Barometric Vertical Rate age',
+    'meaning': ''
+} {
+    'field_name': 'I295__FX__val',
+    'description': 'Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension'
+    }]
+} {
+    'field_name': 'I295__GVR__val',
+    'description': 'Geometric Vertical Rate age',
+    'meaning': ''
+} {
+    'field_name': 'I295__GV__val',
+    'description': 'Ground Vector age',
+    'meaning': ''
+} {
+    'field_name': 'I295__TAR__val',
+    'description': 'Track Angle Rate age',
+    'meaning': ''
+} {
+    'field_name': 'I295__TID__val',
+    'description': 'Target Identification age',
+    'meaning': ''
+} {
+    'field_name': 'I295__TS__val',
+    'description': 'Target Status age',
+    'meaning': ''
+} {
+    'field_name': 'I295__MET__val',
+    'description': 'Met Information age',
+    'meaning': ''
+} {
+    'field_name': 'I295__ROA__val',
+    'description': 'Roll Angle age',
+    'meaning': ''
+} {
+    'field_name': 'I295__FX__val',
+    'description': 'Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension'
+    }]
+} {
+    'field_name': 'I295__ARA__val',
+    'description': 'ACAS Resolution Advisory age',
+    'meaning': ''
+} {
+    'field_name': 'I295__SCC__val',
+    'description': 'Surface Capabilities and Characteristics age',
+    'meaning': ''
+} {
+    'field_name': 'I295__FX__val',
+    'description': 'Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension'
+    }]
+} {
+    'field_name': 'I400__RID__val',
+    'description': 'Receiver ID',
+    'meaning': ''
+} {
+    'field_name': 'IRE__BPS__val',
+    'description': 'Barometric Pressure Setting',
+    'meaning': ''
+} {
+    'field_name': 'IRE__SelH__val',
+    'description': 'Selected Heading',
+    'meaning': ''
+} {
+    'field_name': 'IRE__NAV__val',
+    'description': 'Navigation Mode',
+    'meaning': ''
+} {
+    'field_name': 'IRE__GAO__val',
+    'description': 'GPS Antenna Offset',
+    'meaning': ''
+} {
+    'field_name': 'IRE__SGV__val',
+    'description': 'Surface Ground Vector',
+    'meaning': ''
+} {
+    'field_name': 'IRE__STA__val',
+    'description': 'Aircraft Status Information',
+    'meaning': ''
+} {
+    'field_name': 'IRE__TNH__val',
+    'description': 'True North Heading',
+    'meaning': ''
+} {
+    'field_name': 'IRE__MES__val',
+    'description': 'Military Extended Squitters',
+    'meaning': ''
+} {
+    'field_name': 'IRE__STP__val',
+    'description': 'Aircraft stopped',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Aircraft has not stopped.'
+    }, {
+        '@val': '1',
+        '#text': 'Aircraft has stopped.'
+    }]
+} {
+    'field_name': 'IRE__HTS__val',
+    'description': 'Heading/Ground Track',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Heading/Ground Track is not valid.'
+    }, {
+        '@val': '1',
+        '#text': 'Heading/Ground Track is valid.'
+    }]
+} {
+    'field_name': 'IRE__HTT__val',
+    'description': 'Heading/Ground data',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'Heading data provided.'
+    }, {
+        '@val': '1',
+        '#text': 'Ground Track provided.'
+    }]
+} {
+    'field_name': 'IRE__SVGHRD__val',
+    'description': 'SVG Horizontal Reference Direction',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'True North.'
+    }, {
+        '@val': '1',
+        '#text': 'Magnetic North.'
+    }]
+} {
+    'field_name': 'IRE__GSS__val',
+    'description': 'Ground Speed',
+    'meaning': ''
+} {
+    'field_name': 'IRE__FX__val',
+    'description': 'Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension'
+    }]
+} {
+    'field_name': 'IRE__HGT__val',
+    'description': 'Heading/Ground Track information',
+    'meaning': ''
+} {
+    'field_name': 'IRE__FX__val',
+    'description': 'Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension'
+    }]
+} {
+    'field_name': 'IRE__SUM__val',
+    'description': 'Mode 5 Summary',
+    'meaning': ''
+} {
+    'field_name': 'IRE__PNO__val',
+    'description': 'Mode 5 PIN/National Origin',
+    'meaning': ''
+} {
+    'field_name': 'IRE__EM1__val',
+    'description': 'Extended Mode 1 Code in Octal Representation',
+    'meaning': ''
+} {
+    'field_name': 'IRE__XP__val',
+    'description': 'X Pulse Presence',
+    'meaning': ''
+} {
+    'field_name': 'IRE__FOM__val',
+    'description': 'Figure of Merit',
+    'meaning': ''
+} {
+    'field_name': 'IRE__M2__val',
+    'description': 'Mode 2 Code',
+    'meaning': ''
+} {
+    'field_name': 'IRE__FX__val',
+    'description': 'Extension indicator',
+    'meaning': [{
+        '@val': '0',
+        '#text': 'no extension'
+    }, {
+        '@val': '1',
+        '#text': 'extension'
+    }]
+} {
+    'field_name': 'ISP__SPval__val',
+    'description': '',
+    'meaning': ''
+}

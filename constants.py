@@ -1,7 +1,7 @@
 ROOT_PATH = '/home/production/CODE/space-based-adsb'
 ADSB_PENDING_PATH = '/home/production/DATA/Space Based ADS-B/pcap/pending'
 CSV_PATH = '/home/production/DATA/Space Based ADS-B/csv/pending'
-FIELD_PATH = '/home/production/DATA/Space Based ADS-B/field'
+FIELD_PATH = '/home/production/CODE/space-based-adsb/field'
 
 I021_DATA_ITEM = [
     'I008', 'I010', 'I015', 'I016', 'I020', 'I040', 'I070',

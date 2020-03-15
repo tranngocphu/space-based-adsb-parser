@@ -1,0 +1,3612 @@
+{
+    "Category": {
+        "@id": "021",
+        "@name": "Surveillance Data Exchange - Part 12 ADS-B Reports",
+        "@ver": "2.4",
+        "DataItem": [{
+            "@id": "008",
+            "@rule": "optional",
+            "DataItemName": "Aircraft Operational Status",
+            "DataItemDefinition": "Identification of the operational services available in the aircraft while airborne.",
+            "DataItemFormat": {
+                "@desc": "One-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "1",
+                    "Bits": [{
+                        "@bit": "8",
+                        "BitsShortName": "RA",
+                        "BitsName": "TCAS Resolution Advisory active",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "TCAS II or ACAS RA not active"
+                        }, {
+                            "@val": "1",
+                            "#text": "TCAS RA active"
+                        }]
+                    }, {
+                        "@from": "7",
+                        "@to": "6",
+                        "BitsShortName": "TC",
+                        "BitsName": "Target Change Report Capability",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "no capability for Trajectory Change Reports"
+                        }, {
+                            "@val": "1",
+                            "#text": "support for TC+0 reports only"
+                        }, {
+                            "@val": "2",
+                            "#text": "support for multiple TC reports"
+                        }, {
+                            "@val": "3",
+                            "#text": "reserved"
+                        }]
+                    }, {
+                        "@bit": "5",
+                        "BitsShortName": "TS",
+                        "BitsName": "Target State Report Capability",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "no capability to support Target State Reports"
+                        }, {
+                            "@val": "1",
+                            "#text": "capable of supporting target State Reports"
+                        }]
+                    }, {
+                        "@bit": "4",
+                        "BitsShortName": "ARV",
+                        "BitsName": "Air-Referenced Velocity Report Capability",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "no capability to generate ARV-reports"
+                        }, {
+                            "@val": "1",
+                            "#text": "capable of generate ARV-reports"
+                        }]
+                    }, {
+                        "@bit": "3",
+                        "BitsShortName": "CDTI_A",
+                        "BitsName": "Cockpit Display of Traffic Information airborne",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "CDTI not operational"
+                        }, {
+                            "@val": "1",
+                            "#text": "CDTI operational"
+                        }]
+                    }, {
+                        "@bit": "2",
+                        "BitsShortName": "not_TCAS",
+                        "BitsName": "TCAS System Status",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "TCAS operational or unknown"
+                        }, {
+                            "@val": "1",
+                            "#text": "TCAS not installed or not operational"
+                        }]
+                    }, {
+                        "@bit": "1",
+                        "BitsShortName": "SA",
+                        "BitsName": "Single Antenna",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Antenna Diversity"
+                        }, {
+                            "@val": "1",
+                            "#text": "Single Antenna only"
+                        }]
+                    }]
+                }
+            }
+        }, {
+            "@id": "010",
+            "@rule": "mandatory",
+            "DataItemName": "Data Source Identification",
+            "DataItemDefinition": "Identification of the ADS-B station providing information.",
+            "DataItemFormat": {
+                "@desc": "Two-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@from": "16",
+                        "@to": "9",
+                        "BitsShortName": "SAC",
+                        "BitsName": "System Area Code"
+                    }, {
+                        "@from": "8",
+                        "@to": "1",
+                        "BitsShortName": "SIC",
+                        "BitsName": "System Identification Code"
+                    }]
+                }
+            },
+            "DataItemNote": "The up-to-date list of SACs is published on the EUROCONTROL ASTERIX Web Site (http://www.eurocontrol.int/services/system-area-code-list)."
+        }, {
+            "@id": "015",
+            "@rule": "optional",
+            "DataItemName": "Service Identification",
+            "DataItemDefinition": "Identification of the service provided to one or more users.",
+            "DataItemFormat": {
+                "@desc": "One-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "1",
+                    "Bits": {
+                        "@from": "8",
+                        "@to": "1",
+                        "BitsShortName": "id",
+                        "BitsName": "Service Identification"
+                    }
+                }
+            },
+            "DataItemNote": "1- The service identification is allocated by the system.\n2- The service identification is also available in item I023/015 [Ref. 3]."
+        }, {
+            "@id": "016",
+            "@rule": "optional",
+            "DataItemName": "Service Management",
+            "DataItemDefinition": "Identification of services offered by a ground station (identified by a SIC code).",
+            "DataItemFormat": {
+                "@desc": "One-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "1",
+                    "Bits": {
+                        "@from": "8",
+                        "@to": "1",
+                        "BitsShortName": "RP",
+                        "BitsName": "Report Period",
+                        "BitsUnit": {
+                            "@scale": "0.5",
+                            "@min": "0",
+                            "@max": "127.5",
+                            "#text": "s"
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "1. This item contains the same information as item I023/101 in ASTERIX category 023 [Ref. 3]. Since not all service users receive category 023 data, this information has to be conveyed in category 021 as well. 2. If this item is due to be sent according to the encoding rule above, it shall be sent with the next target report"
+        }, {
+            "@id": "020",
+            "@rule": "optional",
+            "DataItemName": "Emitter Category",
+            "DataItemDefinition": "Characteristics of the originating ADS-B unit.",
+            "DataItemFormat": {
+                "@desc": "One-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "1",
+                    "Bits": {
+                        "@from": "8",
+                        "@to": "1",
+                        "BitsShortName": "ECAT",
+                        "BitsName": "Emitter Category",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "No ADS-B Emitter Category Information"
+                        }, {
+                            "@val": "1",
+                            "#text": "light aircraft <= 15500 lbs"
+                        }, {
+                            "@val": "2",
+                            "#text": "15500 lbs < small aircraft < 75000 lbs"
+                        }, {
+                            "@val": "3",
+                            "#text": "75000 lbs < medium a/c < 300000 lbs"
+                        }, {
+                            "@val": "4",
+                            "#text": "High Vortex Large"
+                        }, {
+                            "@val": "5",
+                            "#text": "300000 lbs <= heavy aircraft"
+                        }, {
+                            "@val": "6",
+                            "#text": "highly manoeuvrable (5g acceleration capability) and high speed (>400 knots cruise)"
+                        }, {
+                            "@val": "7",
+                            "#text": "reserved"
+                        }, {
+                            "@val": "8",
+                            "#text": "reserved"
+                        }, {
+                            "@val": "9",
+                            "#text": "reserved"
+                        }, {
+                            "@val": "10",
+                            "#text": "rotocraft"
+                        }, {
+                            "@val": "11",
+                            "#text": "glider / sailplane"
+                        }, {
+                            "@val": "12",
+                            "#text": "lighter-than-air"
+                        }, {
+                            "@val": "13",
+                            "#text": "unmanned aerial vehicle"
+                        }, {
+                            "@val": "14",
+                            "#text": "space / transatmospheric vehicle"
+                        }, {
+                            "@val": "15",
+                            "#text": "ultralight / handglider / paraglider"
+                        }, {
+                            "@val": "16",
+                            "#text": "parachutist / skydiver"
+                        }, {
+                            "@val": "17",
+                            "#text": "reserved"
+                        }, {
+                            "@val": "18",
+                            "#text": "reserved"
+                        }, {
+                            "@val": "19",
+                            "#text": "reserved"
+                        }, {
+                            "@val": "20",
+                            "#text": "surface emergency vehicle"
+                        }, {
+                            "@val": "21",
+                            "#text": "surface service vehicle"
+                        }, {
+                            "@val": "22",
+                            "#text": "fixed ground or tethered obstruction"
+                        }, {
+                            "@val": "23",
+                            "#text": "cluster obstacle"
+                        }, {
+                            "@val": "24",
+                            "#text": "line obstacle"
+                        }]
+                    }
+                }
+            }
+        }, {
+            "@id": "040",
+            "@rule": "mandatory",
+            "DataItemName": "Target Report Descriptor",
+            "DataItemDefinition": "Type and characteristics of the data as transmitted by a system.",
+            "DataItemFormat": {
+                "@desc": "Variable Length Data Item, comprising a primary subfield of one octet, followed by one-octet extensions as necessary.",
+                "Variable": {
+                    "Fixed": [{
+                        "@length": "1",
+                        "Bits": [{
+                            "@from": "8",
+                            "@to": "6",
+                            "BitsShortName": "ATP",
+                            "BitsName": "Address Type",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "24-Bit ICAO address"
+                            }, {
+                                "@val": "1",
+                                "#text": "Duplicate address"
+                            }, {
+                                "@val": "2",
+                                "#text": "Surface vehicle address"
+                            }, {
+                                "@val": "3",
+                                "#text": "Anonymous address"
+                            }, {
+                                "@val": "4",
+                                "#text": "Reserved for future use"
+                            }, {
+                                "@val": "5",
+                                "#text": "Reserved for future use"
+                            }, {
+                                "@val": "6",
+                                "#text": "Reserved for future use"
+                            }, {
+                                "@val": "7",
+                                "#text": "Reserved for future use"
+                            }]
+                        }, {
+                            "@from": "5",
+                            "@to": "4",
+                            "BitsShortName": "ARC",
+                            "BitsName": "Altitude Reporting Capability",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "25 ft"
+                            }, {
+                                "@val": "1",
+                                "#text": "100 ft"
+                            }, {
+                                "@val": "2",
+                                "#text": "Unknown"
+                            }, {
+                                "@val": "3",
+                                "#text": "Invalid"
+                            }]
+                        }, {
+                            "@bit": "3",
+                            "BitsShortName": "RC",
+                            "BitsName": "Range Check",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Default"
+                            }, {
+                                "@val": "1",
+                                "#text": "Range Check passed, CPR Validation pending"
+                            }]
+                        }, {
+                            "@bit": "2",
+                            "BitsShortName": "RAB",
+                            "BitsName": "Report Type",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Report from target transponder"
+                            }, {
+                                "@val": "1",
+                                "#text": "Report from field monitor (fixed transponder)"
+                            }]
+                        }, {
+                            "@bit": "1",
+                            "@fx": "1",
+                            "BitsShortName": "FX",
+                            "BitsName": "Field Extension",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "End of item"
+                            }, {
+                                "@val": "1",
+                                "#text": "Entension into first extent"
+                            }]
+                        }]
+                    }, {
+                        "@length": "1",
+                        "Bits": [{
+                            "@bit": "8",
+                            "BitsShortName": "DCR",
+                            "BitsName": "Differential Correction",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "No differential correction (ADS-B)"
+                            }, {
+                                "@val": "1",
+                                "#text": "Differential correction (ADS-B)"
+                            }]
+                        }, {
+                            "@bit": "7",
+                            "BitsShortName": "GBS",
+                            "BitsName": "Ground Bit Setting",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Ground Bit not set"
+                            }, {
+                                "@val": "1",
+                                "#text": "Ground Bit set"
+                            }]
+                        }, {
+                            "@bit": "6",
+                            "BitsShortName": "SIM",
+                            "BitsName": "Simulated Target",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Actual target report"
+                            }, {
+                                "@val": "1",
+                                "#text": "Simulated target report"
+                            }]
+                        }, {
+                            "@bit": "5",
+                            "BitsShortName": "TST",
+                            "BitsName": "Test Target",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Default"
+                            }, {
+                                "@val": "1",
+                                "#text": "Test Target"
+                            }]
+                        }, {
+                            "@bit": "4",
+                            "BitsShortName": "SAA",
+                            "BitsName": "Selected Altitude Available",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Equipment capable to provide Selected Altitude"
+                            }, {
+                                "@val": "1",
+                                "#text": "Equipment not capable to provide Selected Altitude"
+                            }]
+                        }, {
+                            "@from": "3",
+                            "@to": "2",
+                            "BitsShortName": "CL",
+                            "BitsName": "Confidence Level",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Report valid"
+                            }, {
+                                "@val": "1",
+                                "#text": "Report suspect"
+                            }, {
+                                "@val": "2",
+                                "#text": "No information"
+                            }, {
+                                "@val": "3",
+                                "#text": "Reserved for future use"
+                            }]
+                        }, {
+                            "@bit": "1",
+                            "@fx": "1",
+                            "BitsShortName": "FX",
+                            "BitsName": "Field Extension",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "End of item"
+                            }, {
+                                "@val": "1",
+                                "#text": "Entension into second extent"
+                            }]
+                        }]
+                    }, {
+                        "@length": "1",
+                        "Bits": [{
+                            "@bit": "8",
+                            "BitsShortName": "spare",
+                            "BitsName": "Spare bits set to 0",
+                            "BitsConst": "0"
+                        }, {
+                            "@bit": "7",
+                            "BitsShortName": "LLC",
+                            "BitsName": "List Lookup Check",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "default"
+                            }, {
+                                "@val": "1",
+                                "#text": "List Lookup failed"
+                            }]
+                        }, {
+                            "@bit": "6",
+                            "BitsShortName": "IPC",
+                            "BitsName": "Independent Position Check",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "default"
+                            }, {
+                                "@val": "1",
+                                "#text": "Independent Position Check failed"
+                            }]
+                        }, {
+                            "@bit": "5",
+                            "BitsShortName": "NOGO",
+                            "BitsName": "No-go Bit Status",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "NOGO-bit not set"
+                            }, {
+                                "@val": "1",
+                                "#text": "NOGO-bit set"
+                            }]
+                        }, {
+                            "@bit": "4",
+                            "BitsShortName": "CPR",
+                            "BitsName": "Compact Position Reporting",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "CPR Validation correct"
+                            }, {
+                                "@val": "1",
+                                "#text": "CPR Validation failed"
+                            }]
+                        }, {
+                            "@bit": "3",
+                            "BitsShortName": "LDPJ",
+                            "BitsName": "Local Decoding Position Jump",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "LDPJ not detected"
+                            }, {
+                                "@val": "1",
+                                "#text": "LDPJ detected"
+                            }]
+                        }, {
+                            "@bit": "2",
+                            "BitsShortName": "RCF",
+                            "BitsName": "Range Check",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "default"
+                            }, {
+                                "@val": "1",
+                                "#text": "Range Check failed"
+                            }]
+                        }, {
+                            "@bit": "1",
+                            "@fx": "1",
+                            "BitsShortName": "FX",
+                            "BitsName": "Field Extension",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "End of data item"
+                            }, {
+                                "@val": "1",
+                                "#text": "Entension into third extent"
+                            }]
+                        }]
+                    }]
+                }
+            },
+            "DataItemNote": "1. Bit 3 indicates that the position reported by the target is within a credible range from the ground station. The range check is followed by the CPR validation to ensure that global and local position decoding both indicate valid position information. Bit 3=1 indicates that the range check was done, but the CPR validation is not yet completed. Once CPR validation is completed, Bit 3 will be reset to 0.\n2. The second extension signals the reasons for which the report has been indicated as suspect (indication Confidence Level (CL) in the first extension). Bit 2 indicates that the Range Check failed, i.e. the target is reported outside the credible range for the Ground Station. For operational users such a target will be suppressed. In services used for monitoring the Ground Station, the target will be transmitted with bit 2 indicating the fault condition.\n3. Bit 6, if set to 1, indicates that the position reported by the target was validated by an independent means and a discrepancy was ADS-B Target Reports EUROCONTROL-SPEC-0149-12 Edition : 2.4 Released Edition Page 17 detected. If no independent position check is implemented, the default value '0' is to be used.\n4. Bit 5 represents the setting of the GO/NOGO-bit as defined in item I023/100 of category 023 [Ref. 3].\n5. Bit 7, if set to 1, indicates that a lookup in a Black-list/White-list failed, indicating that the target may be suspect"
+        }, {
+            "@id": "070",
+            "@rule": "optional",
+            "DataItemName": "Mode 3/A Code in Octal Representation",
+            "DataItemDefinition": "Mode-3/A code converted into octal representation.",
+            "DataItemFormat": {
+                "@desc": "Two-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@from": "16",
+                        "@to": "13",
+                        "BitsShortName": "spare",
+                        "BitsName": "Spare bits set to 0",
+                        "BitsConst": "0"
+                    }, {
+                        "@from": "12",
+                        "@to": "1",
+                        "@encode": "octal",
+                        "BitsShortName": "Mode3A",
+                        "BitsName": "Mode-3/A reply in octal"
+                    }]
+                }
+            }
+        }, {
+            "@id": "071",
+            "@rule": "optional",
+            "DataItemName": "Time of Applicability for Position",
+            "DataItemDefinition": "Time of applicability of the reported position, in the form of elapsed time since last midnight, expressed as UTC.",
+            "DataItemFormat": {
+                "@desc": "Three-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "3",
+                    "Bits": {
+                        "@from": "24",
+                        "@to": "1",
+                        "BitsShortName": "time_applicability_position",
+                        "BitsName": "Time of Applicability of Position",
+                        "BitsUnit": {
+                            "@scale": "0.0078125",
+                            "#text": "s"
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "1. The time of applicability value is reset to zero at every midnight. 2. The time of applicability indicates the exact time at which the position transmitted in the target report is valid."
+        }, {
+            "@id": "072",
+            "@rule": "optional",
+            "DataItemName": "Time of Applicability for Velocity",
+            "DataItemDefinition": "Time of applicability (measurement) of the reported velocity, in the form of elapsed time since last midnight, expressed as UTC.",
+            "DataItemFormat": {
+                "@desc": "Three-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "3",
+                    "Bits": {
+                        "@from": "24",
+                        "@to": "1",
+                        "BitsShortName": "time_applicability_velocity",
+                        "BitsName": "Time of Applicability of Velocity",
+                        "BitsUnit": {
+                            "@scale": "0.0078125",
+                            "#text": "s"
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "1. The time of applicability value is reset to zero at every midnight. 2. The time of applicability indicates the exact time at which the velocity information transmitted in the target report is valid. 3. This item will not be available in some ADS-B technologies."
+        }, {
+            "@id": "073",
+            "@rule": "optional",
+            "DataItemName": "Time of Message Reception for Position",
+            "DataItemDefinition": "Time of reception of the latest position squitter in the Ground Station, in the form of elapsed time since last midnight, expressed as UTC.",
+            "DataItemFormat": {
+                "@desc": "Three-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "3",
+                    "Bits": {
+                        "@from": "24",
+                        "@to": "1",
+                        "BitsShortName": "time_reception_position",
+                        "BitsName": "Time of Message Reception of Position",
+                        "BitsUnit": {
+                            "@scale": "0.0078125",
+                            "#text": "s"
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "The time of message reception value is reset to zero at every midnight."
+        }, {
+            "@id": "074",
+            "@rule": "optional",
+            "DataItemName": "Time of Message Reception of Position-High Precision",
+            "DataItemDefinition": "Time at which the latest ADS-B position information was received by the ground station, expressed as fraction of the second of the UTC Time.",
+            "DataItemFormat": {
+                "@desc": "Four-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "4",
+                    "Bits": [{
+                        "@from": "32",
+                        "@to": "31",
+                        "BitsShortName": "FSI",
+                        "BitsName": "Full Second Indication",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "TOMRp whole seconds = (I021/073) Whole seconds"
+                        }, {
+                            "@val": "1",
+                            "#text": "TOMRp whole seconds = (I021/073) Whole seconds + 1"
+                        }, {
+                            "@val": "2",
+                            "#text": "TOMRp whole seconds = (I021/073) Whole seconds - 1"
+                        }, {
+                            "@val": "3",
+                            "#text": "Reserved"
+                        }]
+                    }, {
+                        "@from": "30",
+                        "@to": "1",
+                        "BitsShortName": "time_reception_position_highprecision",
+                        "BitsName": "Fractional part of the time of message reception for position in the ground station.",
+                        "BitsUnit": {
+                            "@scale": "0.9313225746154785",
+                            "#text": "ns"
+                        }
+                    }]
+                }
+            }
+        }, {
+            "@id": "075",
+            "@rule": "optional",
+            "DataItemName": "Time of Message Reception for Velocity",
+            "DataItemDefinition": "Time of reception of the latest velocity squitter in the Ground Station, in the form of elapsed time since last midnight, expressed as UTC.",
+            "DataItemFormat": {
+                "@desc": "Three-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "3",
+                    "Bits": {
+                        "@from": "24",
+                        "@to": "1",
+                        "BitsShortName": "time_reception_velocity",
+                        "BitsName": "Time of Message Reception of Velocity",
+                        "BitsUnit": {
+                            "@scale": "0.0078125",
+                            "#text": "s"
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "The time of message reception value is reset to zero at every midnight."
+        }, {
+            "@id": "076",
+            "@rule": "optional",
+            "DataItemName": "Time of Message Reception of Velocity-High Precision",
+            "DataItemDefinition": "Time at which the latest ADS-B velocity information was received by the ground station, expressed as fraction of the second of the UTC Time.",
+            "DataItemFormat": {
+                "@desc": "Four-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "4",
+                    "Bits": [{
+                        "@from": "32",
+                        "@to": "31",
+                        "BitsShortName": "FSI",
+                        "BitsName": "Full Second Indication",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "TOMRv whole seconds = (I021/073) Whole seconds"
+                        }, {
+                            "@val": "1",
+                            "#text": "TOMRv whole seconds = (I021/073) Whole seconds + 1"
+                        }, {
+                            "@val": "2",
+                            "#text": "TOMRv whole seconds = (I021/073) Whole seconds - 1"
+                        }, {
+                            "@val": "3",
+                            "#text": "Reserved"
+                        }]
+                    }, {
+                        "@from": "30",
+                        "@to": "1",
+                        "BitsShortName": "time_reception_velocity_highprecision",
+                        "BitsName": "Fractional part of the time of message reception for velocity in the ground station.",
+                        "BitsUnit": {
+                            "@scale": "0.9313225746154785",
+                            "#text": "ns"
+                        }
+                    }]
+                }
+            }
+        }, {
+            "@id": "077",
+            "@rule": "optional",
+            "DataItemName": "Time of ASTERIX Report Transmission",
+            "DataItemDefinition": "Time of the transmission of the ASTERIX category 021 report in the form of elapsed time since last midnight, expressed as UTC.",
+            "DataItemFormat": {
+                "@desc": "Three-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "3",
+                    "Bits": {
+                        "@from": "24",
+                        "@to": "1",
+                        "BitsShortName": "time_report_transmission",
+                        "BitsName": "Time of ASTERIX Report Transmission",
+                        "BitsUnit": {
+                            "@scale": "0.0078125",
+                            "#text": "s"
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "The time of ASTERIX report transmission value is reset to zero at every midnight."
+        }, {
+            "@id": "080",
+            "@rule": "mandatory",
+            "DataItemName": "Target Address",
+            "DataItemDefinition": "Target address (emitter identifier) assigned uniquely to each target.",
+            "DataItemFormat": {
+                "@desc": "Three-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "3",
+                    "Bits": {
+                        "@from": "24",
+                        "@to": "1",
+                        "@encode": "hex",
+                        "BitsShortName": "TAddr",
+                        "BitsName": "Target Address"
+                    }
+                }
+            }
+        }, {
+            "@id": "090",
+            "@rule": "mandatory",
+            "DataItemName": "Quality Indicators",
+            "DataItemDefinition": "ADS-B quality indicators transmitted by a/c according to MOPS version.",
+            "DataItemFormat": {
+                "@desc": "Variable Length Data Item, comprising a primary subfield of one- octet, followed by one-octet extents as necessary.",
+                "Variable": {
+                    "Fixed": [{
+                        "@length": "1",
+                        "Bits": [{
+                            "@from": "8",
+                            "@to": "6",
+                            "BitsShortName": "NUCr_or_NACv",
+                            "BitsName": "Navigation Uncertainty Category for velocity or Navigation Accuracy Category for Velocity"
+                        }, {
+                            "@from": "5",
+                            "@to": "2",
+                            "BitsShortName": "NUCp_or_NIC",
+                            "BitsName": "Navigation Uncertainty Category for Position NUCp or Navigation Integrity Category NIC."
+                        }, {
+                            "@bit": "1",
+                            "@fx": "1",
+                            "BitsShortName": "FX",
+                            "BitsName": "Extension Indicator",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "End of Data Item"
+                            }, {
+                                "@val": "1",
+                                "#text": "Extension into first extent"
+                            }]
+                        }]
+                    }, {
+                        "@length": "1",
+                        "Bits": [{
+                            "@bit": "8",
+                            "BitsShortName": "NICbaro",
+                            "BitsName": "Navigation Integrity Category for Barometric Altitude"
+                        }, {
+                            "@from": "7",
+                            "@to": "6",
+                            "BitsShortName": "SIL",
+                            "BitsName": "Surveillance (version 1) or Source (version 2) Integrity Level"
+                        }, {
+                            "@from": "5",
+                            "@to": "2",
+                            "BitsShortName": "NACp",
+                            "BitsName": "Navigation Accuracy Category for Position"
+                        }, {
+                            "@bit": "1",
+                            "@fx": "1",
+                            "BitsShortName": "FX",
+                            "BitsName": "Extension Indicator",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "End of Data Item"
+                            }, {
+                                "@val": "1",
+                                "#text": "Extension into next extent"
+                            }]
+                        }]
+                    }, {
+                        "@length": "1",
+                        "Bits": [{
+                            "@from": "8",
+                            "@to": "7",
+                            "BitsShortName": "spare",
+                            "BitsName": "Spare bits set to 0",
+                            "BitsConst": "0"
+                        }, {
+                            "@bit": "6",
+                            "BitsShortName": "SILS",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Measured per light-hour"
+                            }, {
+                                "@val": "1",
+                                "#text": "Measured per sample"
+                            }]
+                        }, {
+                            "@from": "5",
+                            "@to": "4",
+                            "BitsShortName": "SDA",
+                            "BitsName": "Horizontal Position System Design Assurance Level (as defined in version 2)"
+                        }, {
+                            "@from": "3",
+                            "@to": "2",
+                            "BitsShortName": "GVA",
+                            "BitsName": "Geometric Altitude Accuracy"
+                        }, {
+                            "@bit": "1",
+                            "@fx": "1",
+                            "BitsShortName": "FX",
+                            "BitsName": "Extension Indicator",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "End of Data Item"
+                            }, {
+                                "@val": "1",
+                                "#text": "Extension into next extent"
+                            }]
+                        }]
+                    }, {
+                        "@length": "1",
+                        "Bits": [{
+                            "@from": "8",
+                            "@to": "5",
+                            "BitsShortName": "PIC",
+                            "BitsName": "Position Integrity Category"
+                        }, {
+                            "@from": "4",
+                            "@to": "2",
+                            "BitsShortName": "spare",
+                            "BitsName": "Spare bits set to 0",
+                            "BitsConst": "0"
+                        }, {
+                            "@bit": "1",
+                            "@fx": "1",
+                            "BitsShortName": "FX",
+                            "BitsName": "Extension Indicator",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "End of Data Item"
+                            }, {
+                                "@val": "1",
+                                "#text": "Extension into next extent"
+                            }]
+                        }]
+                    }]
+                }
+            },
+            "DataItemNote": "1. The primary subfield is kept for backwards compatibility reasons. Version 2 NIC-values shall be mapped accordingly. This is required to ensure that downstream systems, which are not capable of interpreting extensions 2 and 3 (because they use an ASTERIX edition earlier than 2.0) still get the required information\n2. 'Version 1' or 'Version 2' refers to the MOPS version as defined in data item I021/210, bits 6/4\n3. PIC=0 is defined for completeness only. In this case the third extension shall not be generated.\n4. For ED102A/DO260B PIC values of 7 and 9, the NIC supplements for airborne messages (NIC supplements A/B) and surface messages (NIC supplements A/C) are listed. For ED102A/DO260B PIC=8, the NIC supplements A/B for airborne messages are listed. For DO260A PIC values of 7 and 8, the NIC supplement for airborne messages is shown in brackets. The aircraft air-ground status, and hence message type (airborne or surface), is derived from the GBS-bit in I021/040, 1st extension"
+        }, {
+            "@id": "110",
+            "@rule": "optional",
+            "DataItemName": "Trajectory Intent",
+            "DataItemDefinition": "Reports indicating the 4D intended trajectory of the aircraft.",
+            "DataItemFormat": {
+                "@desc": "Compound Data Item, comprising a primary subfield of one octet, followed by the indicated subfields.",
+                "Compound": {
+                    "Variable": [{
+                        "Fixed": {
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "TIS",
+                                "BitsName": "Trajectory Intent Status",
+                                "BitsPresence": "1"
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "TID",
+                                "BitsName": "Trajectory Intent Data",
+                                "BitsPresence": "2"
+                            }, {
+                                "@from": "6",
+                                "@to": "2",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "1",
+                                "@fx": "1",
+                                "BitsShortName": "FX",
+                                "BitsName": "Extension Indicator",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "End of Data Item"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Extension into next extent"
+                                }]
+                            }]
+                        }
+                    }, {
+                        "Fixed": {
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "NAV",
+                                "BitsName": "NAV",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Trajectory Intent Data is available for this aircraft"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Trajectory Intent Data is not available for this aircraft"
+                                }]
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "NVB",
+                                "BitsName": "NVB",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Trajectory Intent Data is valid"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Trajectory Intent Data is not valid"
+                                }]
+                            }, {
+                                "@from": "6",
+                                "@to": "2",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to zero",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "1",
+                                "@fx": "1",
+                                "BitsShortName": "FX",
+                                "BitsName": "Extension Indicator",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "End of Data Item"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Extension into next extent"
+                                }]
+                            }]
+                        }
+                    }],
+                    "Repetitive": {
+                        "Fixed": {
+                            "@length": "15",
+                            "Bits": [{
+                                "@bit": "120",
+                                "BitsShortName": "TCA",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "TCP number available"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "TCP number not available"
+                                }]
+                            }, {
+                                "@bit": "119",
+                                "BitsShortName": "NC",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "TCP compliance"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "TCP non-compliance"
+                                }]
+                            }, {
+                                "@from": "118",
+                                "@to": "113",
+                                "BitsShortName": "TcpN",
+                                "BitsName": "Trajectory Change Point Number"
+                            }, {
+                                "@from": "112",
+                                "@to": "97",
+                                "@encode": "signed",
+                                "BitsShortName": "Alt",
+                                "BitsName": "Altitude",
+                                "BitsUnit": {
+                                    "@scale": "10",
+                                    "@min": "-1500",
+                                    "@max": "150000",
+                                    "#text": "ft"
+                                }
+                            }, {
+                                "@from": "96",
+                                "@to": "73",
+                                "@encode": "signed",
+                                "BitsShortName": "Lat",
+                                "BitsName": "Latitude",
+                                "BitsUnit": {
+                                    "@scale": "0.000021457672119140625",
+                                    "@min": "-90",
+                                    "@max": "90",
+                                    "#text": "deg"
+                                }
+                            }, {
+                                "@from": "72",
+                                "@to": "49",
+                                "@encode": "signed",
+                                "BitsShortName": "Lon",
+                                "BitsName": "Longitude",
+                                "BitsUnit": {
+                                    "@scale": "0.000021457672119140625",
+                                    "@min": "-180",
+                                    "@max": "180",
+                                    "#text": "deg"
+                                }
+                            }, {
+                                "@from": "48",
+                                "@to": "45",
+                                "BitsShortName": "PType",
+                                "BitsName": "Point Type",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Unknown"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Fly by waypoint (LT)"
+                                }, {
+                                    "@val": "2",
+                                    "#text": "Fly over waypoint (LT)"
+                                }, {
+                                    "@val": "3",
+                                    "#text": "Hold pattern (LT)"
+                                }, {
+                                    "@val": "4",
+                                    "#text": "Procedure hold (LT)"
+                                }, {
+                                    "@val": "5",
+                                    "#text": "Procedure turn (LT)"
+                                }, {
+                                    "@val": "6",
+                                    "#text": "RF leg (LT)"
+                                }, {
+                                    "@val": "7",
+                                    "#text": "Top of climb (VT)"
+                                }, {
+                                    "@val": "8",
+                                    "#text": "Top of descent (VT)"
+                                }, {
+                                    "@val": "9",
+                                    "#text": "Start of level (VT)"
+                                }, {
+                                    "@val": "10",
+                                    "#text": "Cross-over altitude (VT)"
+                                }, {
+                                    "@val": "11",
+                                    "#text": "Transition altitude (VT)"
+                                }]
+                            }, {
+                                "@from": "44",
+                                "@to": "43",
+                                "BitsShortName": "TD",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "N/A"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Turn right"
+                                }, {
+                                    "@val": "2",
+                                    "#text": "Turn left"
+                                }, {
+                                    "@val": "3",
+                                    "#text": "No turn"
+                                }]
+                            }, {
+                                "@bit": "42",
+                                "BitsShortName": "TRA",
+                                "BitsName": "Turn Radius Availability",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "TTR not available"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "TTR available"
+                                }]
+                            }, {
+                                "@bit": "41",
+                                "BitsShortName": "TOA",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "TOV available"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "TOV not available"
+                                }]
+                            }, {
+                                "@from": "40",
+                                "@to": "17",
+                                "BitsShortName": "TOV",
+                                "BitsName": "Time Over Point",
+                                "BitsUnit": {
+                                    "@scale": "1",
+                                    "#text": "s"
+                                }
+                            }, {
+                                "@from": "16",
+                                "@to": "1",
+                                "BitsShortName": "TTR",
+                                "BitsName": "TCP Turn radius",
+                                "BitsUnit": {
+                                    "@scale": "0.01",
+                                    "@max": "655.35",
+                                    "#text": "Nm"
+                                }
+                            }]
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "1. NC is set to one when the aircraft will not fly the path described by the TCP data.\n2. TCP numbers start from zero.\n3. LT = Lateral Type\n4. VT = Vertical Type\n5. TOV gives the estimated time before reaching the point. It is defined as the absolute time from midnight.\n6. TOV is meaningful only if TOA is set to 1."
+        }, {
+            "@id": "130",
+            "@rule": "optional",
+            "DataItemName": "Position in WGS-84 Co-ordinates",
+            "DataItemDefinition": "Position in WGS-84 Co-ordinates.",
+            "DataItemFormat": {
+                "@desc": "Six-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "6",
+                    "Bits": [{
+                        "@from": "25",
+                        "@to": "48",
+                        "@encode": "signed",
+                        "BitsShortName": "Lat",
+                        "BitsName": "Latitude in WGS.84 in twos complement. Range -90 <= Lat <= 90 deg.",
+                        "BitsUnit": {
+                            "@scale": "0.000021457672119140625",
+                            "#text": "deg"
+                        }
+                    }, {
+                        "@from": "1",
+                        "@to": "24",
+                        "@encode": "signed",
+                        "BitsShortName": "Lon",
+                        "BitsName": "Longitude in WGS.84 in twos complement. Range -180 <= longitude < 180 deg.",
+                        "BitsUnit": {
+                            "@scale": "0.000021457672119140625",
+                            "#text": "deg"
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "Positive longitude indicates East. Positive latitude indicates North."
+        }, {
+            "@id": "131",
+            "@rule": "optional",
+            "DataItemName": "High-Resolution Position in WGS-84 Co-ordinates",
+            "DataItemDefinition": "Position in WGS-84 Co-ordinates in high resolution.",
+            "DataItemFormat": {
+                "@desc": "Eight-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "8",
+                    "Bits": [{
+                        "@from": "64",
+                        "@to": "33",
+                        "@encode": "signed",
+                        "BitsShortName": "Lat",
+                        "BitsName": "Latitude In WGS.84 in twos complement. Range -90 <= Lat <= 90 deg.",
+                        "BitsUnit": {
+                            "@scale": "0.00000016763806343078613",
+                            "#text": "deg"
+                        }
+                    }, {
+                        "@from": "32",
+                        "@to": "1",
+                        "@encode": "signed",
+                        "BitsShortName": "Lon",
+                        "BitsName": "Longitude In WGS.84 in two's complement. Range -180 <= longitude < 180 deg.",
+                        "BitsUnit": {
+                            "@scale": "0.00000016763806343078613",
+                            "#text": "deg"
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "Positive longitude indicates East. Positive latitude indicates North."
+        }, {
+            "@id": "132",
+            "@rule": "optional",
+            "DataItemName": "Message Amplitude",
+            "DataItemDefinition": "Amplitude, in dBm, of ADS-B messages received by the ground station, coded in two's complement.",
+            "DataItemFormat": {
+                "@desc": "One-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "1",
+                    "Bits": {
+                        "@from": "8",
+                        "@to": "1",
+                        "@encode": "signed",
+                        "BitsShortName": "MAM",
+                        "BitsName": "Message Amplitude",
+                        "BitsUnit": {
+                            "@scale": "1",
+                            "#text": "dBm"
+                        }
+                    }
+                }
+            }
+        }, {
+            "@id": "140",
+            "@rule": "optional",
+            "DataItemName": "Geometric Height",
+            "DataItemDefinition": "Minimum height from a plane tangent to the earth's ellipsoid, defined by WGS-84, in two's complement form.",
+            "DataItemFormat": {
+                "@desc": "Two-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": {
+                        "@from": "16",
+                        "@to": "1",
+                        "@encode": "signed",
+                        "BitsShortName": "geometric_height",
+                        "BitsName": "Geometric Height",
+                        "BitsUnit": {
+                            "@scale": "6.25",
+                            "@min": "-1500",
+                            "@max": "150000",
+                            "#text": "ft"
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "1. LSB is required to be less than 10 ft by ICAO.\n2. A value of '0111111111111111' indicates that the aircraft transmits a 'greater than' indication."
+        }, {
+            "@id": "145",
+            "@rule": "optional",
+            "DataItemName": "Flight Level",
+            "DataItemDefinition": "Flight Level from barometric measurements, not QNH corrected, in two's complement form.",
+            "DataItemFormat": {
+                "@desc": "Two-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": {
+                        "@from": "16",
+                        "@to": "1",
+                        "@encode": "signed",
+                        "BitsShortName": "FL",
+                        "BitsName": "Flight Level",
+                        "BitsUnit": {
+                            "@scale": "0.25",
+                            "@min": "-15",
+                            "@max": "1500",
+                            "#text": "FL"
+                        }
+                    }
+                }
+            }
+        }, {
+            "@id": "146",
+            "@rule": "optional",
+            "DataItemName": "Intermediate State Selected Altitude",
+            "DataItemDefinition": "The Selected Altitude as provided by the avionics and corresponding either to the MCP/FCU Selected Altitude (the ATC cleared altitude entered by the flight crew into the avionics) or to the FMS Selected Altitude.",
+            "DataItemFormat": {
+                "@desc": "Two-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@bit": "16",
+                        "BitsShortName": "SAS",
+                        "BitsName": "Source Availability",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "No source information provided"
+                        }, {
+                            "@val": "1",
+                            "#text": "Source Information provided"
+                        }]
+                    }, {
+                        "@from": "15",
+                        "@to": "14",
+                        "BitsShortName": "Source",
+                        "BitsName": "Source",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Unknown"
+                        }, {
+                            "@val": "1",
+                            "#text": "Aircraft Altitude (Holding Altitude)"
+                        }, {
+                            "@val": "2",
+                            "#text": "FCU/MCP Selected Altitude"
+                        }, {
+                            "@val": "3",
+                            "#text": "FMS Selected Altitude"
+                        }]
+                    }, {
+                        "@from": "13",
+                        "@to": "1",
+                        "@encode": "signed",
+                        "BitsShortName": "Alt",
+                        "BitsName": "Altitude",
+                        "BitsUnit": {
+                            "@scale": "25",
+                            "@min": "-1300",
+                            "@max": "100000",
+                            "#text": "ft"
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "1. The Selected Altitude provided in this field is not necessarily the 'Target Altitude' as defined by ICAO.\n2. The value of 'Source' (bits 15/14) indicating 'unknown' or 'Aircraft Altitude' is kept for backward compatibility as these indications are not provided by 'version 2' systems as defined by data item I021/210, bits 6/4.\n3. Vertical mode indications supporting the determination of the nature of the Selected Altitude are provided in the Reserved Expansion Field in the subfield NAV."
+        }, {
+            "@id": "148",
+            "@rule": "optional",
+            "DataItemName": "Final State Selected Altitude",
+            "DataItemDefinition": "The vertical intent value that corresponds with the ATC cleared altitude, as derived from the Altitude Control Panel (MCP/FCU).",
+            "DataItemFormat": {
+                "@desc": "Two-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@bit": "16",
+                        "BitsShortName": "MV",
+                        "BitsName": "Manage Vertical Mode",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Not active"
+                        }, {
+                            "@val": "1",
+                            "#text": "Active"
+                        }]
+                    }, {
+                        "@bit": "15",
+                        "BitsShortName": "AH",
+                        "BitsName": "Altitude Hold Mode",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Not active"
+                        }, {
+                            "@val": "1",
+                            "#text": "Active"
+                        }]
+                    }, {
+                        "@bit": "14",
+                        "BitsShortName": "AM",
+                        "BitsName": "Approach Mode",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Not active"
+                        }, {
+                            "@val": "1",
+                            "#text": "Active"
+                        }]
+                    }, {
+                        "@from": "13",
+                        "@to": "1",
+                        "@encode": "signed",
+                        "BitsShortName": "Alt",
+                        "BitsName": "Altitude",
+                        "BitsUnit": {
+                            "@scale": "25",
+                            "@min": "-1300",
+                            "@max": "100000",
+                            "#text": "ft"
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "This item is kept for backward compatibility but shall not be used for 'version 2' ADS-B systems (as defined by data item I021/210, bits 6/4) for which item 146 will be used to forward the MCP/FCU or the FMS selected altitude information. For 'version 2' ADS-B systems, the vertical mode indications will be provided through the Reserved Expansion Field in the subfield NAV ."
+        }, {
+            "@id": "150",
+            "@rule": "optional",
+            "DataItemName": "Air Speed",
+            "DataItemDefinition": "Calculated Air Speed (Element of Air Vector).",
+            "DataItemFormat": {
+                "@desc": "Two-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@bit": "16",
+                        "BitsShortName": "IM",
+                        "BitsName": "Air Speed type",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Air Speed = IAS"
+                        }, {
+                            "@val": "1",
+                            "#text": "Air Speed = Mach"
+                        }]
+                    }, {
+                        "@from": "15",
+                        "@to": "1",
+                        "BitsShortName": "ASpeed",
+                        "BitsName": "Air Speed (IAS or Mach)"
+                    }]
+                }
+            }
+        }, {
+            "@id": "151",
+            "@rule": "optional",
+            "DataItemName": "True Air Speed",
+            "DataItemDefinition": "True Air Speed.",
+            "DataItemFormat": {
+                "@desc": "Two-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@bit": "16",
+                        "BitsShortName": "RE",
+                        "BitsName": "Range Exceeded Indicator",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Value in defined range"
+                        }, {
+                            "@val": "1",
+                            "#text": "Value exceeds defined range"
+                        }]
+                    }, {
+                        "@from": "15",
+                        "@to": "1",
+                        "BitsShortName": "TAS",
+                        "BitsName": "True Air Speed",
+                        "BitsUnit": {
+                            "@scale": "1",
+                            "#text": "knot"
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "The RE-Bit, if set, indicates that the value to be transmitted is beyond the range defined for this specific data item and the applied technology. In this case the True Air Speed contains the maximum value that can be downloaded from the aircraft avionics and the RE- bit indicates that the actual value is greater than the value contained in the field."
+        }, {
+            "@id": "152",
+            "@rule": "optional",
+            "DataItemName": "Magnetic Heading",
+            "DataItemDefinition": "Magnetic Heading (Element of Air Vector).",
+            "DataItemFormat": {
+                "@desc": "Two-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": {
+                        "@from": "16",
+                        "@to": "1",
+                        "BitsShortName": "MHdg",
+                        "BitsName": "Magnetic Heading",
+                        "BitsUnit": {
+                            "@scale": "0.0054931640625",
+                            "#text": "deg"
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "True North Heading is defined in the Reserved Expansion Field in the subfield TNH."
+        }, {
+            "@id": "155",
+            "@rule": "optional",
+            "DataItemName": "Barometric Vertical Rate",
+            "DataItemDefinition": "Barometric Vertical Rate, in two's complement form.",
+            "DataItemFormat": {
+                "@desc": "Two-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@bit": "16",
+                        "BitsShortName": "RE",
+                        "BitsName": "Range Exceeded Indicator",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Value in defined range"
+                        }, {
+                            "@val": "1",
+                            "#text": "Value exceeds defined range"
+                        }]
+                    }, {
+                        "@from": "15",
+                        "@to": "1",
+                        "@encode": "signed",
+                        "BitsShortName": "BVR",
+                        "BitsName": "Barometric Vertical Rate",
+                        "BitsUnit": {
+                            "@scale": "6.25",
+                            "#text": "feet/minute"
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "The RE-Bit, if set, indicates that the value to be transmitted is beyond the range defined for this specific data item and the applied technology. In this case the Barometric Vertical Rate contains the maximum value that can be downloaded from the aircraft avionics and the RE-bit indicates that the actual value is greater than the value contained in the field."
+        }, {
+            "@id": "157",
+            "@rule": "optional",
+            "DataItemName": "Geometric Vertical Rate",
+            "DataItemDefinition": "Geometric Vertical Rate, in two's complement form, with reference to WGS-84.",
+            "DataItemFormat": {
+                "@desc": "Two-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@bit": "16",
+                        "BitsShortName": "RE",
+                        "BitsName": "Range Exceeded Indicator",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Value in defined range"
+                        }, {
+                            "@val": "1",
+                            "#text": "Value exceeds defined range"
+                        }]
+                    }, {
+                        "@from": "15",
+                        "@to": "1",
+                        "@encode": "signed",
+                        "BitsShortName": "GVR",
+                        "BitsName": "Geometric Vertical Rate",
+                        "BitsUnit": {
+                            "@scale": "6.25",
+                            "#text": "feet/minute"
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "The RE-Bit, if set, indicates that the value to be transmitted is beyond the range defined for this specific data item and the applied technology. In this case the Geometric Vertical Rate contains the maximum value that can be downloaded from the aircraft avionics and the RE-bit indicates that the actual value is greater than the value contained in the field."
+        }, {
+            "@id": "160",
+            "@rule": "optional",
+            "DataItemName": "Airborne Ground Vector",
+            "DataItemDefinition": "Ground Speed and Track Angle elements of Ground Vector.",
+            "DataItemFormat": {
+                "@desc": "Four-Octet fixed length data item.",
+                "Fixed": {
+                    "@length": "4",
+                    "Bits": [{
+                        "@bit": "16",
+                        "BitsShortName": "RE",
+                        "BitsName": "Range Exceeded Indicator",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Value in defined range"
+                        }, {
+                            "@val": "1",
+                            "#text": "Value exceeds defined range"
+                        }]
+                    }, {
+                        "@from": "31",
+                        "@to": "17",
+                        "BitsShortName": "GS",
+                        "BitsName": "Ground Speed referenced to WGS-84",
+                        "BitsUnit": {
+                            "@scale": "0.00006103515625",
+                            "#text": "NM/s"
+                        }
+                    }, {
+                        "@from": "16",
+                        "@to": "1",
+                        "BitsShortName": "TA",
+                        "BitsName": "Track Angle clockwise reference to True North",
+                        "BitsUnit": {
+                            "@scale": "0.0054931640625",
+                            "#text": "deg"
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "1. The RE-Bit, if set, indicates that the value to be transmitted is beyond the range defined for this specific data item and the applied technology. In this case the Ground Speed contains the maximum value that can be downloaded from the aircraft avionics and the RE- bit indicates that the actual value is greater than the value contained in the field.\n2. The Surface Ground Vector format is defined in the Reserved Expansion Field in the subfield SGV."
+        }, {
+            "@id": "161",
+            "@rule": "optional",
+            "DataItemName": "Track Number",
+            "DataItemDefinition": "An integer value representing a unique reference to a track record within a particular track file.",
+            "DataItemFormat": {
+                "@desc": "Two-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@from": "16",
+                        "@to": "13",
+                        "BitsShortName": "spare",
+                        "BitsName": "Spare bits set to zero",
+                        "BitsConst": "0"
+                    }, {
+                        "@from": "12",
+                        "@to": "1",
+                        "BitsShortName": "TrackN",
+                        "BitsName": "Track number"
+                    }]
+                }
+            }
+        }, {
+            "@id": "165",
+            "@rule": "optional",
+            "DataItemName": "Track Angle Rate",
+            "DataItemDefinition": "Rate of Turn, in two's complement form.",
+            "DataItemFormat": {
+                "@desc": "2-Byte Fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": [{
+                        "@from": "16",
+                        "@to": "11",
+                        "BitsShortName": "spare",
+                        "BitsName": "Spare bits set to zero",
+                        "BitsConst": "0"
+                    }, {
+                        "@from": "10",
+                        "@to": "1",
+                        "BitsShortName": "TA_rate",
+                        "BitsName": "Track Angle Rate",
+                        "BitsUnit": {
+                            "@scale": "0.03125",
+                            "#text": "deg/s"
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "1. A positive value represents a right turn, whereas a negative value represents a left turn.\n2. 'Maximum value' means Maximum value or above.\n3. This item will not be transmitted for the technology '1090 MHz Extended Squitter'."
+        }, {
+            "@id": "170",
+            "@rule": "optional",
+            "DataItemName": "Target Identification",
+            "DataItemDefinition": "Target (aircraft or vehicle) identification in 8 characters, as reported by the target.",
+            "DataItemFormat": {
+                "@desc": "Six-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "6",
+                    "Bits": {
+                        "@from": "48",
+                        "@to": "1",
+                        "@encode": "6bitschar",
+                        "BitsShortName": "TId",
+                        "BitsName": "Characters 1-8 (coded on 6 Bits each) defining target identification when flight plan is available or the registration marking when no flight plan is available. Coding rules are provided in [6] Section 3.1.2.9.1.2 and Table 3-9."
+                    }
+                }
+            }
+        }, {
+            "@id": "200",
+            "@rule": "optional",
+            "DataItemName": "Target Status",
+            "DataItemDefinition": "Status of the target",
+            "DataItemFormat": {
+                "@desc": "One-octet fixed length Data Item",
+                "Fixed": {
+                    "@length": "1",
+                    "Bits": [{
+                        "@bit": "8",
+                        "BitsShortName": "ICF",
+                        "BitsName": "Intent Change Flag",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "No intent change active"
+                        }, {
+                            "@val": "1",
+                            "#text": "Intent change flag raised"
+                        }]
+                    }, {
+                        "@bit": "7",
+                        "BitsShortName": "LNAV",
+                        "BitsName": "LNAV Mode",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "LNAV Mode engaged"
+                        }, {
+                            "@val": "1",
+                            "#text": "LNAV Mode not engaged"
+                        }]
+                    }, {
+                        "@bit": "6",
+                        "BitsShortName": "ME",
+                        "BitsName": "Military emergency",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "No military emergency"
+                        }, {
+                            "@val": "1",
+                            "#text": "Military emergency/BitsValue>"
+                        }]
+                    }, {
+                        "@from": "5",
+                        "@to": "3",
+                        "BitsShortName": "PS",
+                        "BitsName": "Priority Status",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "No emergency / not reported"
+                        }, {
+                            "@val": "1",
+                            "#text": "General emergency"
+                        }, {
+                            "@val": "2",
+                            "#text": "Lifeguard / medical emergency"
+                        }, {
+                            "@val": "3",
+                            "#text": "Minimum fuel"
+                        }, {
+                            "@val": "4",
+                            "#text": "No communications"
+                        }, {
+                            "@val": "5",
+                            "#text": "Unlawful interference"
+                        }, {
+                            "@val": "6",
+                            "#text": "Downed Aircraft"
+                        }]
+                    }, {
+                        "@from": "2",
+                        "@to": "1",
+                        "BitsShortName": "SS",
+                        "BitsName": "Surveillance Status",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "No condition reported"
+                        }, {
+                            "@val": "1",
+                            "#text": "Permanent Alert (Emergency condition)"
+                        }, {
+                            "@val": "2",
+                            "#text": "Temporary Alert (change in Mode 3/A Code other than emergency)"
+                        }, {
+                            "@val": "3",
+                            "#text": "SPI set"
+                        }]
+                    }]
+                }
+            },
+            "DataItemNote": "Bit-8 (ICF), when set to '1' indicates that new information is available in the Mode S GICB registers 40, 41 or 42."
+        }, {
+            "@id": "210",
+            "@rule": "optional",
+            "DataItemName": "MOPS Version",
+            "DataItemDefinition": "Identification of the MOPS version used by a/c to supply ADS-B information.",
+            "DataItemFormat": {
+                "@desc": "One-octet fixed length Data Item",
+                "Fixed": {
+                    "@length": "1",
+                    "Bits": [{
+                        "@bit": "8",
+                        "BitsShortName": "spare",
+                        "BitsName": "Spare bits set to zero",
+                        "BitsConst": "0"
+                    }, {
+                        "@bit": "7",
+                        "BitsShortName": "VNS",
+                        "BitsName": "Version Not Supported",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "The MOPS Version is supported by the GS"
+                        }, {
+                            "@val": "1",
+                            "#text": "The MOPS Version is not supported by the GS"
+                        }]
+                    }, {
+                        "@from": "6",
+                        "@to": "4",
+                        "BitsShortName": "VN",
+                        "BitsName": "Version Number",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "DO-260 [Ref. 8]"
+                        }, {
+                            "@val": "1",
+                            "#text": "DO-260A [Ref. 9]"
+                        }, {
+                            "@val": "2",
+                            "#text": "DO-260B"
+                        }]
+                    }, {
+                        "@from": "3",
+                        "@to": "1",
+                        "BitsShortName": "LTT",
+                        "BitsName": "Link Technology Type",
+                        "BitsValue": [{
+                            "@val": "0",
+                            "#text": "Other"
+                        }, {
+                            "@val": "1",
+                            "#text": "UAT"
+                        }, {
+                            "@val": "2",
+                            "#text": "1090 ES"
+                        }, {
+                            "@val": "3",
+                            "#text": "VDL 4"
+                        }, {
+                            "@val": "4",
+                            "#text": "Not assigned"
+                        }, {
+                            "@val": "5",
+                            "#text": "Not assigned"
+                        }, {
+                            "@val": "6",
+                            "#text": "Not assigned"
+                        }, {
+                            "@val": "7",
+                            "#text": "Not assigned"
+                        }]
+                    }]
+                }
+            },
+            "DataItemNote": "Bit 7 (VNS) when set to 1 indicates that the aircraft transmits a MOPS Version indication that is not supported by the Ground Station. However, since MOPS versions are supposed to be backwards compatible, the GS has attempted to interpret the message and achieved a credible result. The fact that the MOPS version received is not supported by the GS is submitted as additional information to subsequent processing systems."
+        }, {
+            "@id": "220",
+            "@rule": "optional",
+            "DataItemName": "Met Information",
+            "DataItemDefinition": "Meteorological information.",
+            "DataItemFormat": {
+                "@desc": "Compound data item consisting of a one byte primary sub-field, followed by up to four fixed length data fields.",
+                "Compound": {
+                    "Variable": {
+                        "Fixed": {
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "WS",
+                                "BitsName": "Wind speed",
+                                "BitsPresence": "1"
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "WD",
+                                "BitsName": "Wind Direction",
+                                "BitsPresence": "2"
+                            }, {
+                                "@bit": "6",
+                                "BitsShortName": "TMP",
+                                "BitsName": "Temperature",
+                                "BitsPresence": "3"
+                            }, {
+                                "@bit": "5",
+                                "BitsShortName": "TRB",
+                                "BitsName": "Turbulence",
+                                "BitsPresence": "4"
+                            }, {
+                                "@from": "4",
+                                "@to": "2",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "1",
+                                "@fx": "1",
+                                "BitsShortName": "FX",
+                                "BitsName": "Extension indicator",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "no extension"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "extension"
+                                }]
+                            }]
+                        }
+                    },
+                    "Fixed": [{
+                        "@length": "2",
+                        "Bits": {
+                            "@from": "16",
+                            "@to": "1",
+                            "BitsShortName": "WindS",
+                            "BitsName": "Wind Speed",
+                            "BitsUnit": {
+                                "@scale": "1",
+                                "@min": "0",
+                                "@max": "300",
+                                "#text": "knot"
+                            }
+                        }
+                    }, {
+                        "@length": "2",
+                        "Bits": {
+                            "@from": "16",
+                            "@to": "1",
+                            "BitsShortName": "WindD",
+                            "BitsName": "Wind Direction",
+                            "BitsUnit": {
+                                "@scale": "1",
+                                "@min": "1",
+                                "@max": "360",
+                                "#text": "deg"
+                            }
+                        }
+                    }, {
+                        "@length": "2",
+                        "Bits": {
+                            "@from": "16",
+                            "@to": "1",
+                            "@encode": "signed",
+                            "BitsShortName": "Temp",
+                            "BitsName": "Temperature",
+                            "BitsUnit": {
+                                "@scale": "0.25",
+                                "@min": "-100",
+                                "@max": "100",
+                                "#text": "C"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "8",
+                            "@to": "1",
+                            "BitsShortName": "Turb",
+                            "BitsName": "Turbulence"
+                        }
+                    }]
+                }
+            }
+        }, {
+            "@id": "230",
+            "@rule": "optional",
+            "DataItemName": "Roll Angle",
+            "DataItemDefinition": "The roll angle, in two's complement form, of an aircraft executing a turn.",
+            "DataItemFormat": {
+                "@desc": "A two byte fixed length data item.",
+                "Fixed": {
+                    "@length": "2",
+                    "Bits": {
+                        "@from": "16",
+                        "@to": "1",
+                        "@encode": "signed",
+                        "BitsShortName": "RollA",
+                        "BitsName": "Roll Angle",
+                        "BitsUnit": {
+                            "@scale": "0.01",
+                            "@min": "-180",
+                            "@max": "180",
+                            "#text": "deg"
+                        }
+                    }
+                }
+            },
+            "DataItemNote": "1. Negative Value indicates 'Left Wing Down'. 2. Resolution provided by the technology '1090 MHz Extended Squitter' is 1 degree."
+        }, {
+            "@id": "250",
+            "@rule": "mandatory",
+            "DataItemName": "Mode S MB Data",
+            "DataItemDefinition": "Mode S Comm B data as extracted from the aircraft transponder.",
+            "DataItemFormat": {
+                "@desc": "Repetitive Data Item starting with a one-octet Field Repetition Indicator (REP) followed by at least one BDS message comprising one seven octet BDS register and one octet BDS code.",
+                "Repetitive": {
+                    "BDS": null
+                }
+            },
+            "DataItemNote": "1. For the transmission of BDS20, item 170 should be used.\n2. For the transmission of BDS30, item 260 is used."
+        }, {
+            "@id": "260",
+            "@rule": "mandatory",
+            "DataItemName": "ACAS Resolution Advisory Report",
+            "DataItemDefinition": "Currently active Resolution Advisory (RA), if any, generated by the ACAS associated with the transponder transmitting the RA message and threat identity data.",
+            "DataItemFormat": {
+                "@desc": "Seven-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "7",
+                    "Bits": [{
+                        "@from": "56",
+                        "@to": "52",
+                        "BitsShortName": "TYP",
+                        "BitsName": "Message Type"
+                    }, {
+                        "@from": "51",
+                        "@to": "49",
+                        "BitsShortName": "STYP",
+                        "BitsName": "Message Sub-Type"
+                    }, {
+                        "@from": "48",
+                        "@to": "35",
+                        "BitsShortName": "ARA",
+                        "BitsName": "Active Resolution Advisories"
+                    }, {
+                        "@from": "34",
+                        "@to": "31",
+                        "BitsShortName": "RAC",
+                        "BitsName": "RAC (RA Complement) Record"
+                    }, {
+                        "@bit": "30",
+                        "BitsShortName": "RAT",
+                        "BitsName": "RA Terminated"
+                    }, {
+                        "@bit": "29",
+                        "BitsShortName": "MTE",
+                        "BitsName": "Multiple Threat Encounter"
+                    }, {
+                        "@from": "28",
+                        "@to": "27",
+                        "BitsShortName": "TTI",
+                        "BitsName": "Threat Type Indicator"
+                    }, {
+                        "@from": "26",
+                        "@to": "1",
+                        "BitsShortName": "TID",
+                        "BitsName": "Threat Identity Data"
+                    }]
+                }
+            },
+            "DataItemNote": "1. Version denotes the MOPS version as defined in I021/210, bits 6/4\n2. This data items copies the value of BDS register 6,1 for message type 28, subtype 2\n3. The 'TYP' and 'STYP' items are implementation (i.e. link technology) dependent.\n4. Refer to ICAO Annex 10 SARPs for detailed explanations [Ref. 10]."
+        }, {
+            "@id": "271",
+            "@rule": "optional",
+            "DataItemName": "Surface Capabilities and Characteristics",
+            "DataItemDefinition": "Operational capabilities of the aircraft while on the ground.",
+            "DataItemFormat": {
+                "@desc": "Variable Length Data Item, comprising a primary subfield of one-octet, followed by an one-octet extents if necessary.",
+                "Variable": {
+                    "Fixed": [{
+                        "@length": "1",
+                        "Bits": [{
+                            "@from": "8",
+                            "@to": "7",
+                            "BitsShortName": "spare",
+                            "BitsName": "Spare bits set to zero",
+                            "BitsConst": "0"
+                        }, {
+                            "@bit": "6",
+                            "BitsShortName": "POA",
+                            "BitsName": "Position Offset Applied",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Position transmitted is not ADS-B position reference point"
+                            }, {
+                                "@val": "1",
+                                "#text": "Position transmitted is the ADS-B position reference point"
+                            }]
+                        }, {
+                            "@bit": "5",
+                            "BitsShortName": "CDTI_S",
+                            "BitsName": "Cockpit Display of Traffic Information Surface",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "CDTI not operational"
+                            }, {
+                                "@val": "1",
+                                "#text": "CDTI operational"
+                            }]
+                        }, {
+                            "@bit": "4",
+                            "BitsShortName": "B2_low",
+                            "BitsName": "Class B2 transmit power less than 70 Watts",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": ">= 70 Watts"
+                            }, {
+                                "@val": "1",
+                                "#text": "< 70 Watts"
+                            }]
+                        }, {
+                            "@bit": "3",
+                            "BitsShortName": "RAS",
+                            "BitsName": "Receiving ATC Services",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "Aircraft not receiving ATC-services"
+                            }, {
+                                "@val": "1",
+                                "#text": "Aircraft receiving ATC services"
+                            }]
+                        }, {
+                            "@bit": "2",
+                            "BitsShortName": "IDENT",
+                            "BitsName": "Setting of 'IDENT'-switch",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "IDENT switch not active"
+                            }, {
+                                "@val": "1",
+                                "#text": "IDENT switch active"
+                            }]
+                        }, {
+                            "@bit": "1",
+                            "@fx": "1",
+                            "BitsShortName": "FX",
+                            "BitsName": "FX Extension indicator",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "no extension"
+                            }, {
+                                "@val": "1",
+                                "#text": "extension into first extent"
+                            }]
+                        }]
+                    }, {
+                        "@length": "1",
+                        "Bits": [{
+                            "@from": "8",
+                            "@to": "5",
+                            "BitsShortName": "LW",
+                            "BitsName": "Length and width of the aircraft"
+                        }, {
+                            "@from": "4",
+                            "@to": "2",
+                            "BitsShortName": "spare",
+                            "BitsName": "Spare bits set to zero",
+                            "BitsConst": "0"
+                        }, {
+                            "@bit": "1",
+                            "@fx": "1",
+                            "BitsShortName": "FX",
+                            "BitsName": "Extension indicator",
+                            "BitsValue": [{
+                                "@val": "0",
+                                "#text": "no extension"
+                            }, {
+                                "@val": "1",
+                                "#text": "extension"
+                            }]
+                        }]
+                    }]
+                }
+            },
+            "DataItemNote": "1. Version 2 (as defined in I021/210, bits 6/4) data technology protocols encode 'No Data or Unknown' with value 0. In this case data item I021/271, first extension is not generated.\n2. As of edition 2.2 the structure of this data item has been changed. Edition 2.2 is not backwards compatible with previous editions."
+        }, {
+            "@id": "295",
+            "@rule": "optional",
+            "DataItemName": "Data Ages",
+            "DataItemDefinition": "Ages of the data provided.",
+            "DataItemFormat": {
+                "@desc": "Compound Data Item, comprising a primary subfield of up to five octets, followed by the indicated subfields.",
+                "Compound": {
+                    "Variable": {
+                        "Fixed": [{
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "AOS",
+                                "BitsName": "Aircraft Operational Status age",
+                                "BitsPresence": "1"
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "TRD",
+                                "BitsName": "Target Report Descriptor age",
+                                "BitsPresence": "2"
+                            }, {
+                                "@bit": "6",
+                                "BitsShortName": "M3A",
+                                "BitsName": "Mode 3/A Code age",
+                                "BitsPresence": "3"
+                            }, {
+                                "@bit": "5",
+                                "BitsShortName": "QI",
+                                "BitsName": "Quality Indicators age",
+                                "BitsPresence": "4"
+                            }, {
+                                "@bit": "4",
+                                "BitsShortName": "TI",
+                                "BitsName": "Trajectory Intent age",
+                                "BitsPresence": "5"
+                            }, {
+                                "@bit": "3",
+                                "BitsShortName": "MAM",
+                                "BitsName": "Message Amplitude age",
+                                "BitsPresence": "6"
+                            }, {
+                                "@bit": "2",
+                                "BitsShortName": "GH",
+                                "BitsName": "Geometric Height age",
+                                "BitsPresence": "7"
+                            }, {
+                                "@bit": "1",
+                                "@fx": "1",
+                                "BitsShortName": "FX",
+                                "BitsName": "Extension indicator",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "no extension"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "extension"
+                                }]
+                            }]
+                        }, {
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "FL",
+                                "BitsName": "Flight Level age",
+                                "BitsPresence": "8"
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "ISA",
+                                "BitsName": "Intermediate State Selected Altitude age",
+                                "BitsPresence": "9"
+                            }, {
+                                "@bit": "6",
+                                "BitsShortName": "FSA",
+                                "BitsName": "Final State Selected Altitude age",
+                                "BitsPresence": "10"
+                            }, {
+                                "@bit": "5",
+                                "BitsShortName": "AS",
+                                "BitsName": "Air Speed age",
+                                "BitsPresence": "11"
+                            }, {
+                                "@bit": "4",
+                                "BitsShortName": "TAS",
+                                "BitsName": "True Air Speed age",
+                                "BitsPresence": "12"
+                            }, {
+                                "@bit": "3",
+                                "BitsShortName": "MH",
+                                "BitsName": "Magnetic Heading age",
+                                "BitsPresence": "13"
+                            }, {
+                                "@bit": "2",
+                                "BitsShortName": "BVR",
+                                "BitsName": "Barometric Vertical Rate age",
+                                "BitsPresence": "14"
+                            }, {
+                                "@bit": "1",
+                                "@fx": "1",
+                                "BitsShortName": "FX",
+                                "BitsName": "Extension indicator",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "no extension"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "extension"
+                                }]
+                            }]
+                        }, {
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "GVR",
+                                "BitsName": "Geometric Vertical Rate age",
+                                "BitsPresence": "15"
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "GV",
+                                "BitsName": "Ground Vector age",
+                                "BitsPresence": "16"
+                            }, {
+                                "@bit": "6",
+                                "BitsShortName": "TAR",
+                                "BitsName": "Track Angle Rate age",
+                                "BitsPresence": "17"
+                            }, {
+                                "@bit": "5",
+                                "BitsShortName": "TID",
+                                "BitsName": "Target Identification age",
+                                "BitsPresence": "18"
+                            }, {
+                                "@bit": "4",
+                                "BitsShortName": "TS",
+                                "BitsName": "Target Status age",
+                                "BitsPresence": "19"
+                            }, {
+                                "@bit": "3",
+                                "BitsShortName": "MET",
+                                "BitsName": "Met Information age",
+                                "BitsPresence": "20"
+                            }, {
+                                "@bit": "2",
+                                "BitsShortName": "ROA",
+                                "BitsName": "Roll Angle age",
+                                "BitsPresence": "21"
+                            }, {
+                                "@bit": "1",
+                                "@fx": "1",
+                                "BitsShortName": "FX",
+                                "BitsName": "Extension indicator",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "no extension"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "extension"
+                                }]
+                            }]
+                        }, {
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "ARA",
+                                "BitsName": "ACAS Resolution Advisory age",
+                                "BitsPresence": "22"
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "SCC",
+                                "BitsName": "Surface Capabilities and Characteristics age",
+                                "BitsPresence": "23"
+                            }, {
+                                "@from": "6",
+                                "@to": "2",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to zero",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "1",
+                                "@fx": "1",
+                                "BitsShortName": "FX",
+                                "BitsName": "Extension indicator",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "no extension"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "extension"
+                                }]
+                            }]
+                        }]
+                    },
+                    "Fixed": [{
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "AOS",
+                            "BitsName": "Age of the latest received information transmitted in item I021/008.",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "TRD",
+                            "BitsName": "Age of the Target Report Descriptor, item I021/040",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "M3A",
+                            "BitsName": "Age of the Mode 3/A Code, item I021/070",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "QI",
+                            "BitsName": "Age of the Quality Indicators, item I021/090",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "TI",
+                            "BitsName": "Age of the Trajectory Intent information, item I021/110",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "MAM",
+                            "BitsName": "Age of the message amplitude, item I021/132",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "GH",
+                            "BitsName": "Age of the Geometric Height, item 021/140",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "FL",
+                            "BitsName": "Age of the Flight Level, item I021/145",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "ISA",
+                            "BitsName": "Age of the Intermediate State Selected Altitude, item I021/146",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "FSA",
+                            "BitsName": "Age of the Final State Selected Altitude, item I021/148",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "AS",
+                            "BitsName": "Age of the Air Speed contained, item I021/150",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "TAS",
+                            "BitsName": "Age of the value for the True Air Speed, item I021/151",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "MH",
+                            "BitsName": "Age of the value for the Magnetic Heading, item I021/152",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "BVR",
+                            "BitsName": "Age of the Barometric Vertical Rate contained, I021/155",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "GVR",
+                            "BitsName": "Age of the Geometric Vertical Rate, item I021/157",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "GV",
+                            "BitsName": "Age of the Ground Vector, item I021/160",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "TAR",
+                            "BitsName": "Age of the Track Angle Rate, item I021/165",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "TID",
+                            "BitsName": "Age of the Target Identification, item I021/170",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "TS",
+                            "BitsName": "Age of the Target Status as contained, item I021/200",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "MET",
+                            "BitsName": "Age of the Meteorological information, I021/220",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "ROA",
+                            "BitsName": "Age of the Roll Angle, item I021/230",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "ARA",
+                            "BitsName": "Age of the latest update of an active ACAS Resolution Advisory, item I021/260",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }, {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "1",
+                            "@to": "8",
+                            "BitsShortName": "SCC",
+                            "BitsName": "Age of the information on the surface capabilities and characteristics of the respective target, item I021/271",
+                            "BitsUnit": {
+                                "@scale": "0.1",
+                                "@max": "25.5",
+                                "#text": "s"
+                            }
+                        }
+                    }]
+                }
+            },
+            "DataItemNote": "1. In all the subfields, the maximum value indicates 'maximum value or above'."
+        }, {
+            "@id": "400",
+            "@rule": "optional",
+            "DataItemName": "Receiver ID",
+            "DataItemDefinition": "Designator of Ground Station in Distributed System.",
+            "DataItemFormat": {
+                "@desc": "One-octet fixed length Data Item.",
+                "Fixed": {
+                    "@length": "1",
+                    "Bits": {
+                        "@from": "8",
+                        "@to": "1",
+                        "BitsShortName": "RID",
+                        "BitsName": "Receiver ID"
+                    }
+                }
+            }
+        }, {
+            "@id": "RE",
+            "DataItemName": "Reserved Expansion Field",
+            "DataItemDefinition": "Reserved Expansion Field of ASTERIX Cat 021 (ADS-B Reports)",
+            "DataItemFormat": {
+                "@desc": "One byte length field, followed by a one byte items indicator and the encoded items.",
+                "Explicit": {
+                    "Compound": {
+                        "Variable": [{
+                            "Fixed": {
+                                "@length": "1",
+                                "Bits": [{
+                                    "@bit": "8",
+                                    "BitsShortName": "BPS",
+                                    "BitsName": "Barometric Pressure Setting",
+                                    "BitsPresence": "1"
+                                }, {
+                                    "@bit": "7",
+                                    "BitsShortName": "SelH",
+                                    "BitsName": "Selected Heading",
+                                    "BitsPresence": "2"
+                                }, {
+                                    "@bit": "6",
+                                    "BitsShortName": "NAV",
+                                    "BitsName": "Navigation Mode",
+                                    "BitsPresence": "3"
+                                }, {
+                                    "@bit": "5",
+                                    "BitsShortName": "GAO",
+                                    "BitsName": "GPS Antenna Offset",
+                                    "BitsPresence": "4"
+                                }, {
+                                    "@bit": "4",
+                                    "BitsShortName": "SGV",
+                                    "BitsName": "Surface Ground Vector",
+                                    "BitsPresence": "5"
+                                }, {
+                                    "@bit": "3",
+                                    "BitsShortName": "STA",
+                                    "BitsName": "Aircraft Status Information",
+                                    "BitsPresence": "6"
+                                }, {
+                                    "@bit": "2",
+                                    "BitsShortName": "TNH",
+                                    "BitsName": "True North Heading",
+                                    "BitsPresence": "7"
+                                }, {
+                                    "@bit": "1",
+                                    "BitsShortName": "MES",
+                                    "BitsName": "Military Extended Squitters",
+                                    "BitsConst": "0"
+                                }]
+                            }
+                        }, {
+                            "Fixed": [{
+                                "@length": "2",
+                                "Bits": [{
+                                    "@bit": "16",
+                                    "BitsShortName": "STP",
+                                    "BitsName": "Aircraft stopped",
+                                    "BitsValue": [{
+                                        "@val": "0",
+                                        "#text": "Aircraft has not stopped."
+                                    }, {
+                                        "@val": "1",
+                                        "#text": "Aircraft has stopped."
+                                    }]
+                                }, {
+                                    "@bit": "15",
+                                    "BitsShortName": "HTS",
+                                    "BitsName": "Heading/Ground Track",
+                                    "BitsValue": [{
+                                        "@val": "0",
+                                        "#text": "Heading/Ground Track is not valid."
+                                    }, {
+                                        "@val": "1",
+                                        "#text": "Heading/Ground Track is valid."
+                                    }]
+                                }, {
+                                    "@bit": "14",
+                                    "BitsShortName": "HTT",
+                                    "BitsName": "Heading/Ground data",
+                                    "BitsValue": [{
+                                        "@val": "0",
+                                        "#text": "Heading data provided."
+                                    }, {
+                                        "@val": "1",
+                                        "#text": "Ground Track provided."
+                                    }]
+                                }, {
+                                    "@bit": "13",
+                                    "BitsShortName": "SVGHRD",
+                                    "BitsName": "SVG Horizontal Reference Direction",
+                                    "BitsValue": [{
+                                        "@val": "0",
+                                        "#text": "True North."
+                                    }, {
+                                        "@val": "1",
+                                        "#text": "Magnetic North."
+                                    }]
+                                }, {
+                                    "@from": "12",
+                                    "@to": "2",
+                                    "BitsShortName": "GSS",
+                                    "BitsName": "Ground Speed",
+                                    "BitsUnit": {
+                                        "@scale": "0.125",
+                                        "#text": "kts"
+                                    }
+                                }, {
+                                    "@bit": "1",
+                                    "@fx": "1",
+                                    "BitsShortName": "FX",
+                                    "BitsName": "Extension indicator",
+                                    "BitsValue": [{
+                                        "@val": "0",
+                                        "#text": "no extension"
+                                    }, {
+                                        "@val": "1",
+                                        "#text": "extension"
+                                    }]
+                                }]
+                            }, {
+                                "@length": "1",
+                                "Bits": [{
+                                    "@from": "8",
+                                    "@to": "2",
+                                    "BitsShortName": "HGT",
+                                    "BitsName": "Heading/Ground Track information",
+                                    "BitsUnit": {
+                                        "@scale": "2.8125",
+                                        "#text": "deg"
+                                    }
+                                }, {
+                                    "@bit": "1",
+                                    "@fx": "1",
+                                    "BitsShortName": "FX",
+                                    "BitsName": "Extension indicator",
+                                    "BitsValue": [{
+                                        "@val": "0",
+                                        "#text": "no extension"
+                                    }, {
+                                        "@val": "1",
+                                        "#text": "extension"
+                                    }]
+                                }]
+                            }]
+                        }, {
+                            "Fixed": {
+                                "@length": "1",
+                                "Bits": [{
+                                    "@bit": "8",
+                                    "BitsShortName": "SUM",
+                                    "BitsName": "Mode 5 Summary",
+                                    "BitsPresence": "1"
+                                }, {
+                                    "@bit": "7",
+                                    "BitsShortName": "PNO",
+                                    "BitsName": "Mode 5 PIN/National Origin",
+                                    "BitsPresence": "2"
+                                }, {
+                                    "@bit": "6",
+                                    "BitsShortName": "EM1",
+                                    "BitsName": "Extended Mode 1 Code in Octal Representation",
+                                    "BitsPresence": "3"
+                                }, {
+                                    "@bit": "5",
+                                    "BitsShortName": "XP",
+                                    "BitsName": "X Pulse Presence",
+                                    "BitsPresence": "4"
+                                }, {
+                                    "@bit": "4",
+                                    "BitsShortName": "FOM",
+                                    "BitsName": "Figure of Merit",
+                                    "BitsPresence": "5"
+                                }, {
+                                    "@bit": "3",
+                                    "BitsShortName": "M2",
+                                    "BitsName": "Mode 2 Code",
+                                    "BitsPresence": "6"
+                                }, {
+                                    "@bit": "2",
+                                    "BitsShortName": "spare",
+                                    "BitsName": "Spare bit, set to \u201c0\u201d",
+                                    "BitsPresence": "7"
+                                }, {
+                                    "@bit": "1",
+                                    "BitsShortName": "FX",
+                                    "BitsName": "Extension indicator",
+                                    "BitsValue": [{
+                                        "@val": "0",
+                                        "#text": "no extension"
+                                    }, {
+                                        "@val": "1",
+                                        "#text": "extension"
+                                    }]
+                                }]
+                            }
+                        }],
+                        "Fixed": [{
+                            "@length": "2",
+                            "Bits": [{
+                                "@from": "16",
+                                "@to": "13",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to zero",
+                                "BitsConst": "0"
+                            }, {
+                                "@from": "12",
+                                "@to": "1",
+                                "BitsShortName": "BPS",
+                                "BitsName": "Barometric Pressure Setting",
+                                "BitsUnit": {
+                                    "@scale": "0.1",
+                                    "@max": "409.5",
+                                    "#text": "mb"
+                                }
+                            }]
+                        }, {
+                            "@length": "2",
+                            "Bits": [{
+                                "@from": "16",
+                                "@to": "13",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to zero",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "12",
+                                "BitsShortName": "SelHHRD",
+                                "BitsName": "SelH Horizontal Reference Direction",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "True North."
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Magnetic North."
+                                }]
+                            }, {
+                                "@bit": "11",
+                                "BitsShortName": "Stat",
+                                "BitsName": "Selected Heading Status",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Data is either unavailable or invalid."
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Data is available and valid."
+                                }]
+                            }, {
+                                "@from": "10",
+                                "@to": "1",
+                                "BitsShortName": "SelH",
+                                "BitsName": "Selected Heading",
+                                "BitsUnit": {
+                                    "@scale": "0.703125",
+                                    "#text": "deg"
+                                }
+                            }]
+                        }, {
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "AP",
+                                "BitsName": "Autopilot engaged",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Not Autopilot engaged."
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Autopilot engaged."
+                                }]
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "VN",
+                                "BitsName": "VNAV Active (Vertical Navigation)",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Not VNAV Active."
+                                }, {
+                                    "@val": "1",
+                                    "#text": "VNAV Active."
+                                }]
+                            }, {
+                                "@bit": "6",
+                                "BitsShortName": "AH",
+                                "BitsName": "Altitude Hold engaged",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Not Altitude Hold."
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Altitude Hold."
+                                }]
+                            }, {
+                                "@bit": "5",
+                                "BitsShortName": "AM",
+                                "BitsName": "Approach Mode active",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Not Approach Mode."
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Approach Mode."
+                                }]
+                            }, {
+                                "@from": "4",
+                                "@to": "1",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to zero",
+                                "BitsConst": "0"
+                            }]
+                        }, {
+                            "@length": "1",
+                            "Bits": {
+                                "@from": "8",
+                                "@to": "1",
+                                "BitsShortName": "GAO",
+                                "BitsName": "GPS Antenna Offset"
+                            }
+                        }, {
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "ES",
+                                "BitsName": "1090 ES IN capability",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Target is not 1090 ES IN capable."
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Target is 1090 ES IN capable."
+                                }]
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "UAT",
+                                "BitsName": "UAT capability",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Target is not UAT IN capable."
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Target is UAT IN capable."
+                                }]
+                            }, {
+                                "@from": "6",
+                                "@to": "2",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to zero",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "1",
+                                "@fx": "1",
+                                "BitsShortName": "FX",
+                                "BitsName": "Extension indicator",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "no extension"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "extension"
+                                }]
+                            }]
+                        }, {
+                            "@length": "2",
+                            "Bits": {
+                                "@from": "16",
+                                "@to": "1",
+                                "BitsShortName": "TNH",
+                                "BitsName": "True North Magnetic Heading",
+                                "BitsUnit": {
+                                    "@scale": "0.0054931640625",
+                                    "#text": "deg"
+                                }
+                            }
+                        }, {
+                            "@length": "1",
+                            "Bits": [{
+                                "@bit": "8",
+                                "BitsShortName": "M5",
+                                "BitsName": "Mode 5 interrogation",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "No Mode 5 interrogation"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Mode 5 interrogation"
+                                }]
+                            }, {
+                                "@bit": "7",
+                                "BitsShortName": "ID",
+                                "BitsName": "Authenticated Mode 5 ID",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "No authenticated Mode 5 ID reply/report"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Authenticated Mode 5 ID reply/report"
+                                }]
+                            }, {
+                                "@bit": "6",
+                                "BitsShortName": "DA",
+                                "BitsName": "Authenticated Mode 5 Data reply or Report",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "No authenticated Mode 5 Data reply or Report"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Authenticated Mode 5 Data reply or Report"
+                                }]
+                            }, {
+                                "@bit": "5",
+                                "BitsShortName": "M1",
+                                "BitsName": "Mode 1 code",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Mode 1 code not present or not from Mode 5 reply/report"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Mode 1 code from Mode 5 reply/report"
+                                }]
+                            }, {
+                                "@bit": "4",
+                                "BitsShortName": "M2",
+                                "BitsName": "Mode 2 code",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Mode 2 code not present or not from Mode 5 reply/report"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Mode 2 code from Mode 5 reply/report"
+                                }]
+                            }, {
+                                "@bit": "3",
+                                "BitsShortName": "M3",
+                                "BitsName": "Mode 3 code",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Mode 3 code not present or not from Mode 5 reply/report"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Mode 3 code from Mode 5 reply/report"
+                                }]
+                            }, {
+                                "@bit": "2",
+                                "BitsShortName": "MC",
+                                "BitsName": "Flightlevel",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Flightlevel not present or not from Mode 5 reply/report"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Flightlevel from Mode 5 reply/report"
+                                }]
+                            }, {
+                                "@bit": "1",
+                                "BitsShortName": "PO",
+                                "BitsName": "Position from Mode 5 Report",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Position not from Mode 5 report (ADS-B report)"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Position from Mode 5 report"
+                                }]
+                            }]
+                        }, {
+                            "@length": "4",
+                            "Bits": [{
+                                "@from": "32",
+                                "@to": "31",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@from": "30",
+                                "@to": "17",
+                                "BitsShortName": "PIN",
+                                "BitsName": "PIN Code"
+                            }, {
+                                "@from": "16",
+                                "@to": "12",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@from": "11",
+                                "@to": "1",
+                                "BitsShortName": "NO",
+                                "BitsName": "National Origin Code"
+                            }]
+                        }, {
+                            "@length": "2",
+                            "Bits": [{
+                                "@bit": "16",
+                                "BitsShortName": "V",
+                                "BitsName": "Code validated",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Code validated"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Code not validated"
+                                }]
+                            }, {
+                                "@bit": "15",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "14",
+                                "BitsShortName": "L",
+                                "BitsName": "Mode 1 code from transponder or smoothed",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Mode 1 code as derived from the report of the transponder"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Smoothed Mode 1 code as provided by a local tracker"
+                                }]
+                            }, {
+                                "@bit": "13",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@from": "12",
+                                "@to": "1",
+                                "BitsShortName": "EM1",
+                                "BitsName": "Extended Mode 1 Code in octal representation"
+                            }]
+                        }, {
+                            "@length": "1",
+                            "Bits": [{
+                                "@from": "8",
+                                "@to": "7",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "6",
+                                "BitsShortName": "XP",
+                                "BitsName": "X-pulse from Mode 5 PIN reply/report",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "X-Pulse not present"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "X-pulse present"
+                                }]
+                            }, {
+                                "@bit": "5",
+                                "BitsShortName": "X5",
+                                "BitsName": "X-pulse from Mode 5 Data reply or Report.",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "X-pulse set to zero or no authenticated Data reply or Report received."
+                                }, {
+                                    "@val": "1",
+                                    "#text": "X-pulse set to one (present)."
+                                }]
+                            }, {
+                                "@bit": "4",
+                                "BitsShortName": "XC",
+                                "BitsName": "X-pulse from Mode C reply",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "X-pulse set to zero or no Mode C reply"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "X-pulse set to one (present)"
+                                }]
+                            }, {
+                                "@bit": "3",
+                                "BitsShortName": "X3",
+                                "BitsName": "X-pulse from Mode 3/A reply",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "X-pulse set to zero or no Mode 3/A reply"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "X-pulse set to one (present)"
+                                }]
+                            }, {
+                                "@bit": "2",
+                                "BitsShortName": "X2",
+                                "BitsName": "X-pulse from Mode 2 reply",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "X-pulse set to zero or no Mode 2 reply"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "X-pulse set to one (present)"
+                                }]
+                            }, {
+                                "@bit": "1",
+                                "BitsShortName": "X1",
+                                "BitsName": "X-pulse from Mode 1 reply",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "X-pulse set to zero or no Mode 1 reply"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "X-pulse set to one (present)"
+                                }]
+                            }]
+                        }, {
+                            "@length": "1",
+                            "Bits": [{
+                                "@from": "8",
+                                "@to": "6",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "1",
+                                "BitsShortName": "FOM",
+                                "BitsName": "Figure of Merit Position Accuracy as extracted and provided by a Mode 5 transponder"
+                            }]
+                        }, {
+                            "@length": "2",
+                            "Bits": [{
+                                "@bit": "16",
+                                "BitsShortName": "V",
+                                "BitsName": "Code validated",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Code validated"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Code validated"
+                                }]
+                            }, {
+                                "@bit": "15",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@bit": "14",
+                                "BitsShortName": "L",
+                                "BitsName": "Mode 2 code from transponder or smoothed",
+                                "BitsValue": [{
+                                    "@val": "0",
+                                    "#text": "Mode-2 code as derived from the reply of the transponder"
+                                }, {
+                                    "@val": "1",
+                                    "#text": "Smoothed Mode-2 code as provided by a local tracker"
+                                }]
+                            }, {
+                                "@bit": "13",
+                                "BitsShortName": "spare",
+                                "BitsName": "Spare bits set to 0",
+                                "BitsConst": "0"
+                            }, {
+                                "@from": "12",
+                                "@to": "1",
+                                "BitsShortName": "M2CO",
+                                "BitsName": "Mode-2 code in octal representation"
+                            }]
+                        }]
+                    }
+                }
+            },
+            "DataItemNote": "BPS\n1. BPS is the barometric pressure setting of the aircraft minus 800 mb.\n2. A value of \"0\" indicates that in the aircraft a value of 800mb or less has been selected.\n3. A value of \"409.5\" indicates that in the aircraft a value of 1209.5mb or more has been selected.\nSelH\n1. On many aircraft, the ADS-B Transmitting Subsystem receives Selected Heading from a Mode Control Panel / Flight Control Unit (MCP / FCU). Users of this data are cautioned that the Selected Heading value transmitted by the ADS-B Transmitting Subsystem does not necessarily reflect the true intention of the airplane during certain flight modes (e.g., during LNAV mode).\nNAV\n1. This data-item should only be transmitted if an ADS-B indication has been received that the mode bits have been \"actively populated\" by the avionics (1090 ES version 2 (as defined in I021/210) BDS 6,2, subtype 1, bit 47: \"Status of MCP / FCU Mode Bits\")\nGAO\n1. The value of this field is copied from the respective bits 33-40 of version 2 (as defined in I021/210) of 1090 ES BDS register 6,5 (Aircraft Operational Status)\nTNH\n1. Magnetic Heading is defined in I021/152."
+        }, {
+            "@id": "SP",
+            "@rule": "optional",
+            "DataItemName": "Special Purpose",
+            "DataItemDefinition": "Special information",
+            "DataItemFormat": {
+                "@desc": "Repetitive data length item",
+                "Explicit": {
+                    "Fixed": {
+                        "@length": "1",
+                        "Bits": {
+                            "@from": "8",
+                            "@to": "1",
+                            "BitsShortName": "SPval"
+                        }
+                    }
+                }
+            }
+        }],
+        "UAP": {
+            "UAPItem": [{
+                "@bit": "0",
+                "@frn": "1",
+                "@len": "2",
+                "#text": "010"
+            }, {
+                "@bit": "1",
+                "@frn": "2",
+                "@len": "1+",
+                "#text": "040"
+            }, {
+                "@bit": "2",
+                "@frn": "3",
+                "@len": "2",
+                "#text": "161"
+            }, {
+                "@bit": "3",
+                "@frn": "4",
+                "@len": "1",
+                "#text": "015"
+            }, {
+                "@bit": "4",
+                "@frn": "5",
+                "@len": "3",
+                "#text": "071"
+            }, {
+                "@bit": "5",
+                "@frn": "6",
+                "@len": "6",
+                "#text": "130"
+            }, {
+                "@bit": "6",
+                "@frn": "7",
+                "@len": "8",
+                "#text": "131"
+            }, {
+                "@bit": "7",
+                "@frn": "FX",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "8",
+                "@frn": "8",
+                "@len": "3",
+                "#text": "072"
+            }, {
+                "@bit": "9",
+                "@frn": "9",
+                "@len": "2",
+                "#text": "150"
+            }, {
+                "@bit": "10",
+                "@frn": "10",
+                "@len": "2",
+                "#text": "151"
+            }, {
+                "@bit": "11",
+                "@frn": "11",
+                "@len": "3",
+                "#text": "080"
+            }, {
+                "@bit": "12",
+                "@frn": "12",
+                "@len": "3",
+                "#text": "073"
+            }, {
+                "@bit": "13",
+                "@frn": "13",
+                "@len": "4",
+                "#text": "074"
+            }, {
+                "@bit": "14",
+                "@frn": "14",
+                "@len": "3",
+                "#text": "075"
+            }, {
+                "@bit": "15",
+                "@frn": "FX",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "16",
+                "@frn": "15",
+                "@len": "4",
+                "#text": "076"
+            }, {
+                "@bit": "17",
+                "@frn": "16",
+                "@len": "2",
+                "#text": "140"
+            }, {
+                "@bit": "18",
+                "@frn": "17",
+                "@len": "1+",
+                "#text": "090"
+            }, {
+                "@bit": "19",
+                "@frn": "18",
+                "@len": "1",
+                "#text": "210"
+            }, {
+                "@bit": "20",
+                "@frn": "19",
+                "@len": "2",
+                "#text": "070"
+            }, {
+                "@bit": "21",
+                "@frn": "20",
+                "@len": "2",
+                "#text": "230"
+            }, {
+                "@bit": "22",
+                "@frn": "21",
+                "@len": "2",
+                "#text": "145"
+            }, {
+                "@bit": "23",
+                "@frn": "FX",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "24",
+                "@frn": "22",
+                "@len": "2",
+                "#text": "152"
+            }, {
+                "@bit": "25",
+                "@frn": "23",
+                "@len": "1",
+                "#text": "200"
+            }, {
+                "@bit": "26",
+                "@frn": "24",
+                "@len": "2",
+                "#text": "155"
+            }, {
+                "@bit": "27",
+                "@frn": "25",
+                "@len": "2",
+                "#text": "157"
+            }, {
+                "@bit": "28",
+                "@frn": "26",
+                "@len": "4",
+                "#text": "160"
+            }, {
+                "@bit": "29",
+                "@frn": "27",
+                "@len": "2",
+                "#text": "165"
+            }, {
+                "@bit": "30",
+                "@frn": "28",
+                "@len": "3",
+                "#text": "077"
+            }, {
+                "@bit": "31",
+                "@frn": "FX",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "32",
+                "@frn": "29",
+                "@len": "6",
+                "#text": "170"
+            }, {
+                "@bit": "33",
+                "@frn": "30",
+                "@len": "1",
+                "#text": "020"
+            }, {
+                "@bit": "34",
+                "@frn": "31",
+                "@len": "1+",
+                "#text": "220"
+            }, {
+                "@bit": "35",
+                "@frn": "32",
+                "@len": "2",
+                "#text": "146"
+            }, {
+                "@bit": "36",
+                "@frn": "33",
+                "@len": "2",
+                "#text": "148"
+            }, {
+                "@bit": "37",
+                "@frn": "34",
+                "@len": "1+",
+                "#text": "110"
+            }, {
+                "@bit": "38",
+                "@frn": "35",
+                "@len": "1",
+                "#text": "016"
+            }, {
+                "@bit": "39",
+                "@frn": "FX",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "40",
+                "@frn": "36",
+                "@len": "1",
+                "#text": "008"
+            }, {
+                "@bit": "41",
+                "@frn": "37",
+                "@len": "1+",
+                "#text": "271"
+            }, {
+                "@bit": "42",
+                "@frn": "38",
+                "@len": "1",
+                "#text": "132"
+            }, {
+                "@bit": "43",
+                "@frn": "39",
+                "@len": "1+N*8",
+                "#text": "250"
+            }, {
+                "@bit": "44",
+                "@frn": "40",
+                "@len": "7",
+                "#text": "260"
+            }, {
+                "@bit": "45",
+                "@frn": "41",
+                "@len": "1",
+                "#text": "400"
+            }, {
+                "@bit": "46",
+                "@frn": "42",
+                "@len": "1+",
+                "#text": "295"
+            }, {
+                "@bit": "47",
+                "@frn": "FX",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "48",
+                "@frn": "43",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "49",
+                "@frn": "44",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "50",
+                "@frn": "45",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "51",
+                "@frn": "46",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "52",
+                "@frn": "47",
+                "@len": "-",
+                "#text": "-"
+            }, {
+                "@bit": "53",
+                "@frn": "48",
+                "@len": "1+",
+                "#text": "RE"
+            }, {
+                "@bit": "54",
+                "@frn": "49",
+                "@len": "1+",
+                "#text": "SP"
+            }, {
+                "@bit": "55",
+                "@frn": "FX",
+                "@len": "-",
+                "#text": "-"
+            }]
+        }
+    }
+}

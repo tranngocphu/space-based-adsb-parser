@@ -1,0 +1,185 @@
+field_name,data_type,description
+I008__RA__val,INT(1),TCAS Resolution Advisory active
+I008__TC__val,INT(1),Target Change Report Capability
+I008__TS__val,INT(1),Target State Report Capability
+I008__ARV__val,INT(1),Air-Referenced Velocity Report Capability
+I008__CDTI_A__val,INT(1),Cockpit Display of Traffic Information airborne
+I008__not_TCAS__val,INT(1),TCAS System Status
+I008__SA__val,INT(1),Single Antenna
+I010__SAC__val,INT(3),System Area Code
+I010__SIC__val,INT(3),System Identification Code
+I015__id__val,INT(5),Service Identification
+I016__RP__val,DOUBLE,Report Period
+I020__ECAT__val,INT(2),Emitter Category
+I040__ATP__val,INT(1),Address Type
+I040__ARC__val,INT(1),Altitude Reporting Capability
+I040__RC__val,INT(1),Range Check
+I040__RAB__val,INT(1),Report Type
+I040__FX__val,INT(1),Field Extension
+I040__DCR__val,INT(1),Differential Correction
+I040__GBS__val,INT(1),Ground Bit Setting
+I040__SIM__val,INT(1),Simulated Target
+I040__TST__val,INT(1),Test Target
+I040__SAA__val,INT(1),Selected Altitude Available
+I040__CL__val,INT(1),Confidence Level
+I040__FX__val,INT(1),Field Extension
+I040__LLC__val,INT(1),List Lookup Check
+I040__IPC__val,INT(1),Independent Position Check
+I040__NOGO__val,INT(1),No-go Bit Status
+I040__CPR__val,INT(1),Compact Position Reporting
+I040__LDPJ__val,INT(1),Local Decoding Position Jump
+I040__RCF__val,INT(1),Range Check
+I040__FX__val,INT(1),Field Extension
+I070__Mode3A__val,INT(10),Mode-3/A reply in octal
+I071__time_applicability_position__val,DOUBLE,Time of Applicability of Position
+I072__time_applicability_velocity__val,DOUBLE,Time of Applicability of Velocity
+I073__time_reception_position__val,DOUBLE,Time of Message Reception of Position
+I074__FSI__val,INT(1),Full Second Indication
+I074__time_reception_position_highprecision__val,DOUBLE,Fractional part of the time of message reception for position in the ground station.
+I075__time_reception_velocity__val,DOUBLE,Time of Message Reception of Velocity
+I076__FSI__val,INT(1),Full Second Indication
+I076__time_reception_velocity_highprecision__val,DOUBLE,Fractional part of the time of message reception for velocity in the ground station.
+I077__time_report_transmission__val,DOUBLE,Time of ASTERIX Report Transmission
+I080__TAddr__val,VARCHAR(8),Target Address
+I090__NUCr_or_NACv__val,INT(1),Navigation Uncertainty Category for velocity or Navigation Accuracy Category for Velocity
+I090__NUCp_or_NIC__val,INT(2),Navigation Uncertainty Category for Position NUCp or Navigation Integrity Category NIC.
+I090__FX__val,INT(1),Extension Indicator
+I090__NICbaro__val,INT(1),Navigation Integrity Category for Barometric Altitude
+I090__SIL__val,INT(1),Surveillance (version 1) or Source (version 2) Integrity Level
+I090__NACp__val,INT(2),Navigation Accuracy Category for Position
+I090__FX__val,INT(1),Extension Indicator
+I090__SILS__val,INT(1),
+I090__SDA__val,INT(1),Horizontal Position System Design Assurance Level (as defined in version 2)
+I090__GVA__val,INT(1),Geometric Altitude Accuracy
+I090__FX__val,INT(1),Extension Indicator
+I090__PIC__val,INT(2),Position Integrity Category
+I090__FX__val,INT(1),Extension Indicator
+I110__TIS__val,INT(1),Trajectory Intent Status
+I110__TID__val,INT(1),Trajectory Intent Data
+I110__FX__val,INT(1),Extension Indicator
+I110__NAV__val,INT(1),NAV
+I110__NVB__val,INT(1),NVB
+I110__FX__val,INT(1),Extension Indicator
+I110__TCA__val,INT(1),TCP Number Available Status
+I110__NC__val,INT(1),TCP compliance Status
+I110__TcpN__val,INT(3),Trajectory Change Point Number
+I110__Alt__val,INT(6),Altitude
+I110__Lat__val,DOUBLE,Latitude
+I110__Lon__val,DOUBLE,Longitude
+I110__PType__val,INT(2),Point Type
+I110__TD__val,INT(1),Turn Direction
+I110__TRA__val,INT(1),Turn Radius Availability
+I110__TOA__val,INT(1),TOV Status
+I110__TOV__val,INT(4),Time Over Point
+I110__TTR__val,DOUBLE,TCP Turn radius
+I130__Lat__val,DOUBLE,Latitude in WGS.84 in twos complement. Range -90 <= Lat <= 90 deg [-90 90] deg.
+I130__Lon__val,DOUBLE,Longitude in WGS.84 in twos complement. Range -180 <= longitude < 180 deg.
+I131__Lat__val,DOUBLE,Latitude In WGS.84 in twos complement. Range -90 <= Lat <= 90 deg.
+I131__Lon__val,DOUBLE,Longitude In WGS.84 in two\'s complement. Range -180 <= longitude < 180 deg.
+I132__MAM__val,DOUBLE,Message Amplitude
+I140__geometric_height__val,DOUBLE,Geometric Height
+I145__FL__val,DOUBLE,Flight Level
+I146__SAS__val,INT(1),Source Availability
+I146__Source__val,INT(1),Source
+I146__Alt__val,INT(6),Altitude
+I148__MV__val,INT(1),Manage Vertical Mode
+I148__AH__val,INT(1),Altitude Hold Mode
+I148__AM__val,INT(1),Approach Mode
+I148__Alt__val,INT(6),Altitude
+I150__IM__val,INT(1),Air Speed type
+I150__ASpeed__val,DOUBLE,Air Speed (IAS or Mach)
+I151__RE__val,INT(1),Range Exceeded Indicator
+I151__TAS__val,INT(5),True Air Speed
+I152__MHdg__val,DOUBLE,Magnetic Heading
+I155__RE__val,INT(1),Range Exceeded Indicator
+I155__BVR__val,DOUBLE,Barometric Vertical Rate
+I157__RE__val,INT(1),Range Exceeded Indicator
+I157__GVR__val,DOUBLE,Geometric Vertical Rate
+I160__RE__val,INT(1),Range Exceeded Indicator
+I160__GS__val,DOUBLE,Ground Speed referenced to WGS-84
+I160__TA__val,DOUBLE,Track Angle clockwise reference to True North
+I161__TrackN__val,INT(4),Track number
+I165__TA_rate__val,DOUBLE,Track Angle Rate
+I170__TId__val,VARCHAR(8),Characters 1-8 (coded on 6 Bits each) defining target identification when flight plan is available or the registration marking when no flight plan is available. Coding rules are provided in [6] Section 3.1.2.9.1.2 and Table 3-9.
+I200__ICF__val,INT(1),Intent Change Flag
+I200__LNAV__val,INT(1),LNAV Mode
+I200__ME__val,INT(1),Military emergency
+I200__PS__val,INT(1),Priority Status
+I200__SS__val,INT(1),Surveillance Status
+I210__VNS__val,INT(1),Version Not Supported
+I210__VN__val,INT(1),Version Number
+I210__LTT__val,INT(1),Link Technology Type
+I220__WS__val,INT(5),Wind speed
+I220__WD__val,INT(5),Wind Direction
+I220__TMP__val,DOUBLE,Temperature
+I220__TRB__val,INT(1),Turbulence
+I220__FX__val,INT(1),Extension indicator
+I230__RollA__val,DOUBLE,Roll Angle
+I260__TYP__val,INT(2),Message Type
+I260__STYP__val,INT(1),Message Sub-Type
+I260__ARA__val,TEXT,Active Resolution Advisories
+I260__RAC__val,INT(2),RAC (RA Complement) Record
+I260__RAT__val,INT(1),RA Terminated
+I260__MTE__val,INT(1),Multiple Threat Encounter
+I260__TTI__val,INT(1),Threat Type Indicator
+I260__TID__val,TEXT,Threat Identity Data
+I271__POA__val,INT(1),Position Offset Applied
+I271__CDTI_S__val,INT(1),Cockpit Display of Traffic Information Surface
+I271__B2_low__val,INT(1),Class B2 transmit power less than 70 Watts
+I271__RAS__val,INT(1),Receiving ATC Services
+I271__IDENT__val,INT(1),Setting of \'IDENT\'-switch
+I271__FX__val,INT(1),FX Extension indicator
+I271__LW__val,INT(2),Length and width of the aircraft
+I271__FX__val,INT(1),Extension indicator
+I295__AOS__val,DOUBLE,Aircraft Operational Status age
+I295__TRD__val,DOUBLE,Target Report Descriptor age
+I295__M3A__val,DOUBLE,Mode 3/A Code age
+I295__QI__val,DOUBLE,Quality Indicators age
+I295__TI__val,DOUBLE,Trajectory Intent age
+I295__MAM__val,DOUBLE,Message Amplitude age
+I295__GH__val,DOUBLE,Geometric Height age
+I295__FX__val,INT(1),Extension indicator
+I295__FL__val,DOUBLE,Flight Level age
+I295__ISA__val,DOUBLE,Intermediate State Selected Altitude age
+I295__FSA__val,DOUBLE,Final State Selected Altitude age
+I295__AS__val,DOUBLE,Air Speed age
+I295__TAS__val,DOUBLE,True Air Speed age
+I295__MH__val,DOUBLE,Magnetic Heading age
+I295__BVR__val,DOUBLE,Barometric Vertical Rate age
+I295__FX__val,INT(1),Extension indicator
+I295__GVR__val,DOUBLE,Geometric Vertical Rate age
+I295__GV__val,DOUBLE,Ground Vector age
+I295__TAR__val,DOUBLE,Track Angle Rate age
+I295__TID__val,DOUBLE,Target Identification age
+I295__TS__val,DOUBLE,Target Status age
+I295__MET__val,DOUBLE,Met Information age
+I295__ROA__val,DOUBLE,Roll Angle age
+I295__FX__val,INT(1),Extension indicator
+I295__ARA__val,DOUBLE,ACAS Resolution Advisory age
+I295__SCC__val,DOUBLE,Surface Capabilities and Characteristics age
+I295__FX__val,INT(1),Extension indicator
+I400__RID__val,INT(3),Receiver ID
+IRE__BPS__val,,Barometric Pressure Setting
+IRE__SelH__val,,Selected Heading
+IRE__NAV__val,,Navigation Mode
+IRE__GAO__val,,GPS Antenna Offset
+IRE__SGV__val,,Surface Ground Vector
+IRE__STA__val,,Aircraft Status Information
+IRE__TNH__val,,True North Heading
+IRE__MES__val,,Military Extended Squitters
+IRE__STP__val,,Aircraft stopped
+IRE__HTS__val,,Heading/Ground Track
+IRE__HTT__val,,Heading/Ground data
+IRE__SVGHRD__val,,SVG Horizontal Reference Direction
+IRE__GSS__val,,Ground Speed
+IRE__FX__val,,Extension indicator
+IRE__HGT__val,,Heading/Ground Track information
+IRE__FX__val,,Extension indicator
+IRE__SUM__val,,Mode 5 Summary
+IRE__PNO__val,,Mode 5 PIN/National Origin
+IRE__EM1__val,,Extended Mode 1 Code in Octal Representation
+IRE__XP__val,,X Pulse Presence
+IRE__FOM__val,,Figure of Merit
+IRE__M2__val,,Mode 2 Code
+IRE__FX__val,,Extension indicator
+ISP__SPval__val,INT(3),
