@@ -1,4 +1,5 @@
 field_name,data_type,description
+Date,DATE,Date of flight
 I008__RA__val,INT(1),TCAS Resolution Advisory active
 I008__TC__val,INT(1),Target Change Report Capability
 I008__TS__val,INT(1),Target State Report Capability

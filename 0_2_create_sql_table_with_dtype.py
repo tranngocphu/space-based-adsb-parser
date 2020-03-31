@@ -38,21 +38,22 @@ print('Connected to {} in {}'.format(SQL_CON['DATABASE'], SQL_CON['HOST']))
 
 cursor = con.cursor()
 
-table_name = 'ORIGINAL_DATA'
+table_name = 'TRACKS_2020_03'
 
 field_data_file = os.path.join(FIELD_PATH, 'asterix_cat021_2_4_dtype.csv')
 field_df = pd.read_csv(field_data_file)
 
-with open(os.path.join(FIELD_PATH, 'field_list_sql.txt'), 'w') as f1, open(os.path.join(FIELD_PATH, 'field_list_sql_SET.txt'),'w') as f2:
-    f1.write('@TIMESTAMP')
-    f2.write('TIMESTAMP = @TIMESTAMP')
-    for idx, field in field_df.iterrows():
-        if any(substring in field.field_name for substring in ['IRE', 'ISP', '__FX__val']):
-            continue
-        sql = 'ALTER TABLE {} ADD COLUMN {} {};'.format(table_name, field.field_name, field.data_type)    
-        cursor.execute(sql)    
-        sql = 'ALTER TABLE {} MODIFY COLUMN {} {} COMMENT \'{}\';'.format(table_name, field.field_name, field.data_type, field.description)
-        cursor.execute(sql)
-        f1.write(',@{}'.format(field.field_name))
-        f2.write(',{} = nullif(@{}, \'\')'.format(field.field_name, field.field_name))
+for idx, field in field_df.iterrows():
+    if any(substring in field.field_name for substring in ['IRE', 'ISP', '__FX__val']):
+        continue
+    sql = 'ALTER TABLE {} ADD COLUMN {} {};'.format(table_name, field.field_name, field.data_type)    
+    cursor.execute(sql)    
+    sql = 'ALTER TABLE {} MODIFY COLUMN {} {} COMMENT \'{}\';'.format(table_name, field.field_name, field.data_type, field.description)
+    cursor.execute(sql)
 
+sql = 'CREATE INDEX Callsign ON {} (I170__TId__val);'.format(table_name)
+cursor.execute(sql)
+sql = 'CREATE INDEX Date ON {} (Date);'.format(table_name)
+cursor.execute(sql)
+sql = 'ALTER TABLE {} ADD CONSTRAINT Date_Time_Callsign UNIQUE (Date,I073__time_reception_position__val,I170__TId__val);'.format(table_name)
+cursor.execute(sql)

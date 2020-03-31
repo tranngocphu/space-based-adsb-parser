@@ -36,31 +36,38 @@ print('Connected to {} in {}'.format(SQL_CON['DATABASE'], SQL_CON['HOST']))
 
 cursor = con.cursor()
 
-table_name = 'ORIGINAL_DATA'
-
-# PCAP files
+# csv files
 csv_files = get_file_list_in_dir(CSV_PATH)
-
-with open(os.path.join(FIELD_PATH, 'field_list_sql.txt'), 'r') as f:
-    field_list = f.readline()
-
-with open(os.path.join(FIELD_PATH, 'field_list_sql_SET.txt'), 'r') as f:
-    field_list_SET = f.readline()
-
-print(field_list)
 
 for i in range(0, len(csv_files)):
     csv_file = csv_files[i]
+    
+    f = open(csv_file, 'rt')
+    header = f.readline().replace('\n','')    
+    f.close()  
+    header = header.split(',')
+    cols = ['@{}'.format(col) for col in header]
+    cols_order = ','.join(cols)
+
+    cols_set = ['{}=nullif(@{},\'\')'.format(col,col) for col in header ] 
+    cols_set = ','.join(cols_set)   
+    
+    
+    file_name = os.path.basename(csv_file)
+    file_name = file_name.split('_')[2]
+    year = file_name[0:4]
+    month = file_name[4:6]
+    table_name = 'TRACKS_{}_{}'.format(year,month)
+    
     sql = """LOAD DATA LOCAL INFILE '{}' IGNORE
             INTO TABLE {} 
             FIELDS TERMINATED BY ','
             LINES TERMINATED BY '\\n'
             IGNORE 1 LINES
-            ({}) SET {};""".format(csv_file, table_name, field_list, field_list_SET)
+            ({}) SET {};""".format(csv_file, table_name, cols_order, cols_set)
 
-    print(csv_file)
+    print(csv_file, '-->', table_name)
     before = time.datetime.now()
     result = cursor.execute(sql)
     after = time.datetime.now()
     print(i, after - before, '\n')
-

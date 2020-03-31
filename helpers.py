@@ -11,7 +11,6 @@ import time
 from constants import I021_SQL_TABLE_NAME, I021_DATA_DICT
 
 
-
 def list_to_txt(list_, txt_file):
     file = open(txt_file, 'w')    
     for i in range(0, len(list_)):
@@ -186,11 +185,11 @@ def pcap_to_csv(pcap_file, field_list, csv_dir, key_sep='__'):
         writer = csv.writer(csvfile, delimiter=',') 
 
         # write header name line
-        csv_field_list = ['TIMESTAMP'] + field_list
+        csv_field_list = ['Date'] + field_list
         writer.writerow(csv_field_list)
     
         for _, buf in pcap:                   
-            print('Pcap2Csv {}: parsing packet {}'.format(pcap_file, cntr))
+            # print('Pcap2Csv {}: parsing packet {}'.format(pcap_file, cntr))
             cntr += 1
             eth = dpkt.ethernet.Ethernet(buf)
             data = eth.ip.udp.data
@@ -199,11 +198,7 @@ def pcap_to_csv(pcap_file, field_list, csv_dir, key_sep='__'):
 
             for item in parsed:
                 data_row = []  # empty data row
-                time_field = 'I073__time_reception_position__val'
-                time_chained_key = time_field.split(key_sep) 
-                time_in_sec = get_from_dict(item, time_chained_key)
-                timestamp = get_timestamp(date, time_in_sec)
-                data_row.append(timestamp)
+                data_row.append(date)
 
                 for i in range(0, len(field_list)):  # field_list doesn't have TIMESTAMP field
                     chained_key = field_list[i].split(key_sep)  # convert field name to array of keys
@@ -216,7 +211,38 @@ def pcap_to_csv(pcap_file, field_list, csv_dir, key_sep='__'):
                 # make sure the length od data lines always equal length of header line                               
                 assert(len(data_row)==len(csv_field_list))                  
                 writer.writerow(data_row)
+    return True
 
+
+
+def pcap_to_json(pcap_file, field_list, json_dir, key_sep='__'):
+    """Parse a pcap file to a json file"""
+
+    file_name = os.path.basename(pcap_file)    
+
+    with open(pcap_file, 'rb') as pcapfile, open(os.path.join(json_dir, file_name+'.json'), 'wt') as f: 
+
+        print("Start reading file {}".format(pcap_file))
+        pcap = dpkt.pcap.Reader(pcapfile)                
+        cntr = 0         
+    
+        for _, buf in pcap:                   
+            # print('Pcap2Csv {}: parsing packet {}'.format(pcap_file, cntr))
+            cntr += 1
+            eth = dpkt.ethernet.Ethernet(buf)
+            data = eth.ip.udp.data
+            # Parse data
+            parsed = asterix.parse(data)
+
+            for i, item in enumerate(parsed):                 
+                item = json.dumps(item)
+                f.write(item)
+                f.write('\n\n')
+                if i==50:
+                    break
+            break                
+
+    return True
 
 
 def get_field_list_from_csv(csv_file):
@@ -239,14 +265,4 @@ def get_table_name_by_prefix(prefix):
         return '{}_{}'.format(prefix, I021_DATA_DICT[prefix])
     except KeyError:
         return False
-
-
-
-
-if __name__ == "__main__":
-    filepath = '/home/production/DATA/Space Based ADS-B/pending/Space Based ADS-B Part 4 - 29 Feb 2020/11.138.6_00026_20200229120000.113_1Hrs'
-    date = get_date_from_file_path(filepath)
-    timestamp = get_timestamp(date, 40000)
-    print(timestamp)
-
-    
+            
